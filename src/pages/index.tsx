@@ -10,8 +10,6 @@ import Resume from 'components/Sections/Resume';
 import Testimonials from 'components/Sections/Testimonials';
 import {homePageMeta} from 'data/data';
 
-import '98.css';
-
 // eslint-disable-next-line react-memo/require-memo
 const Footer = dynamic(() => import('../components/Sections/Footer'), {ssr: false});
 

@@ -7,6 +7,91 @@
   ::after {
     border-color: currentColor;
   }
+
+  /* Reset 98.css headings to browser defaults */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: revert;
+    line-height: revert;
+    font-weight: revert;
+    margin: 0;
+  }
+}
+
+/* Force Tailwind text utilities to work on headings */
+@layer utilities {
+  h1.text-xs,
+  h2.text-xs,
+  h3.text-xs {
+    font-size: 0.75rem !important;
+  }
+  h1.text-sm,
+  h2.text-sm,
+  h3.text-sm {
+    font-size: 0.875rem !important;
+  }
+  h1.text-base,
+  h2.text-base,
+  h3.text-base {
+    font-size: 1rem !important;
+  }
+  h1.text-lg,
+  h2.text-lg,
+  h3.text-lg {
+    font-size: 1.125rem !important;
+  }
+  h1.text-xl,
+  h2.text-xl,
+  h3.text-xl {
+    font-size: 1.25rem !important;
+  }
+  h1.text-2xl,
+  h2.text-2xl,
+  h3.text-2xl {
+    font-size: 1.5rem !important;
+  }
+  h1.text-3xl,
+  h2.text-3xl,
+  h3.text-3xl {
+    font-size: 1.875rem !important;
+  }
+  h1.text-4xl,
+  h2.text-4xl,
+  h3.text-4xl {
+    font-size: 2.25rem !important;
+  }
+  h1.text-5xl,
+  h2.text-5xl,
+  h3.text-5xl {
+    font-size: 3rem !important;
+  }
+  h1.text-6xl,
+  h2.text-6xl,
+  h3.text-6xl {
+    font-size: 3.75rem !important;
+  }
+
+  /* Prose utility classes for typography */
+  .prose {
+    font-size: 1rem !important;
+    line-height: 1.75 !important;
+  }
+  .prose-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.75 !important;
+  }
+  .prose-xl {
+    font-size: 1.25rem !important;
+    line-height: 1.8 !important;
+  }
+  .prose-2xl {
+    font-size: 1.5rem !important;
+    line-height: 1.6 !important;
+  }
 }
 
 @layer utilities {
@@ -49,6 +134,8 @@
 html {
   -webkit-tap-highlight-color: transparent;
   height: 100vh;
+  /* Tailwind v4 compatibility - reduced base size for better proportions */
+  font-size: 14px;
 }
 
 body {

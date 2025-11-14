@@ -1,4 +1,3 @@
-// import Image from 'next/image';
 import Image from 'next/image';
 import {FC, memo, useMemo} from 'react';
 
@@ -24,7 +23,7 @@ const Hero: FC = memo(() => {
             <div className="flex items-center flex-row">
               <div className="flex flex-col items-center gap-y-4 sm:gap-y-6 p-4 lg:p-6 text-center">
                 <h1 className="text-5xl font-bold text-black sm:text-6xl">{name}</h1>
-                <h2 className="hidden md:block text-base font-bold text-black sm:text-3xl">{subtitle}</h2>
+                <h2 className="hidden md:block text-base font-bold text-black sm:text-xl md:text-3xl">{subtitle}</h2>
               </div>
               <ul className="tree-view max-h-[40vh]">
                 <Image
@@ -38,7 +37,7 @@ const Hero: FC = memo(() => {
               </ul>
             </div>
 
-            <h2 className="md:hidden text-base font-bold text-black sm:text-4xl">{subtitle}</h2>
+            <h2 className="md:hidden text-base font-bold text-black sm:text-xl">{subtitle}</h2>
 
             {description}
             <div className="flex w-full justify-center gap-x-4">
@@ -56,13 +55,6 @@ const Hero: FC = memo(() => {
             </div>
           </div>
         </div>
-        {/* <div className="absolute inset-x-0 bottom-14 flex justify-center">
-          <a
-            className=" p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
-            href={`/#${SectionId.About}`}>
-            <Image alt="double-down" height={40} src={resolveSrc ?? ""} width={40}/>
-          </a>
-        </div> */}
       </div>
     </Section>
   );
