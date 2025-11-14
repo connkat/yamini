@@ -1,10 +1,10 @@
 import {NextPage} from 'next';
 import Head from 'next/head';
-import {memo, PropsWithChildren} from 'react';
+import {PropsWithChildren} from 'react';
 
 import {HomepageMeta} from '../../data/dataDef';
 
-const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, description}) => {
+const Page: NextPage<PropsWithChildren<HomepageMeta>> = ({children, title, description}) => {
   return (
     <>
       <Head>
@@ -25,7 +25,7 @@ const Page: NextPage<PropsWithChildren<HomepageMeta>> = memo(({children, title, 
       {children}
     </>
   );
-});
+};
 
 Page.displayName = 'Page';
 export default Page;

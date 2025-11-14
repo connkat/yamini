@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {FC, memo, useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 
 import {resumeData, SectionId} from '../../../data/data';
 import Section from '../../Layout/Section';
@@ -9,7 +9,7 @@ import ResumeSection from './ResumeSection';
 import {SkillGroup} from './Skills';
 import TimelineItem from './TimelineItem';
 
-const Resume: FC = memo(() => {
+const Resume = () => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
   const {education, experience, skills, clients, timelineImageSrc} = resumeData;
 
@@ -44,7 +44,7 @@ const Resume: FC = memo(() => {
             <div aria-labelledby={`${activeTab.toLowerCase()}-tab`} className="window h-full" role="tabpanel">
               {activeTab === 'Work' && (
                 <div aria-labelledby="work-tab" id="work-panel" role="tabpanel">
-                  <ResumeSection title="Work">
+                  <ResumeSection>
                     <div className="flex flex-row p-6 gap-y-2 justify-center items-stretch">
                       <div className="hidden sm:flex flex-col items-center space-y-20">
                         {experience.map(
@@ -76,7 +76,7 @@ const Resume: FC = memo(() => {
               )}
               {activeTab === 'Skills' && (
                 <div aria-labelledby="skills-tab" id="skills-panel" role="tabpanel">
-                  <ResumeSection title="Skills">
+                  <ResumeSection>
                     <div className="pl-4">
                       {skills.map((skillgroup, index) => (
                         <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
@@ -87,7 +87,7 @@ const Resume: FC = memo(() => {
               )}
               {activeTab === 'Clients' && (
                 <div aria-labelledby="clients-tab" id="clients-panel" role="tabpanel">
-                  <ResumeSection title="Clients">
+                  <ResumeSection>
                     <div className="flex flex-row flex-wrap items-center justify-around p-6">
                       {clients.map(({title, image, imageHeight, imageWidth}) => (
                         <div className="position-relative max-w-[100px] sm:max-w-[175px]" key={title}>
@@ -100,7 +100,7 @@ const Resume: FC = memo(() => {
               )}
               {activeTab === 'Education' && (
                 <div aria-labelledby="education-tab" id="education-panel" role="tabpanel">
-                  <ResumeSection title="Education">
+                  <ResumeSection>
                     <div className="flex flex-col py-12 h-full items-center justify-around">
                       {education.map((item, index) => (
                         <EducationItem item={item} key={`${item.title}-${index}`} />
@@ -115,7 +115,7 @@ const Resume: FC = memo(() => {
       </div>
     </Section>
   );
-});
+};
 
 Resume.displayName = 'Resume';
 export default Resume;

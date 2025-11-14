@@ -1,6 +1,5 @@
 import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import {FC, memo} from 'react';
 
 import {contact, SectionId} from '../../../data/data';
 import {ContactType, ContactValue} from '../../../data/dataDef';
@@ -17,7 +16,7 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
   [ContactType.LinkedIn]: {Icon: LinkedInIcon, srLabel: 'LinkedIn'},
   [ContactType.RescueDogLove]: {Icon: PawIcon, srLabel: 'Rescue Dog Love'},
 };
-const Contact: FC = memo(() => {
+const Contact = () => {
   const {headerText, description, items} = contact;
   return (
     <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Contact}>
@@ -70,7 +69,7 @@ const Contact: FC = memo(() => {
       </div>
     </Section>
   );
-});
+};
 
 Contact.displayName = 'About';
 export default Contact;

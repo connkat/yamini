@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import {FC, memo, useMemo} from 'react';
+import {useMemo} from 'react';
 
 import {aboutData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
 
-const About: FC = memo(() => {
+const About = () => {
   const {backgroundImageSrc, profileImageSrc, description, secondParagraph} = aboutData;
   const resolveSrc = useMemo(() => {
     if (!backgroundImageSrc) return undefined;
@@ -40,7 +40,7 @@ const About: FC = memo(() => {
       </div>
     </Section>
   );
-});
+};
 
 About.displayName = 'About';
 export default About;

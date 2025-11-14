@@ -1,8 +1,6 @@
-import {FC, memo} from 'react';
-
 import {socialLinks} from '../data/data';
 
-const Socials: FC = memo(() => {
+const Socials = () => {
   return (
     <>
       {socialLinks.map(({label, Icon, href}) => (
@@ -17,7 +15,7 @@ const Socials: FC = memo(() => {
       ))}
     </>
   );
-});
+};
 
 Socials.displayName = 'Socials';
 export default Socials;

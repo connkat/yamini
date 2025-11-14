@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import {FC, memo, PropsWithChildren, useMemo} from 'react';
 
-import {Skill as SkillType, SkillGroup as SkillGroupType} from '../../../data/dataDef';
+import {Skill as SkillType, SkillGroup as SkillGroupType} from 'data/dataDef';
 
-export const SkillGroup: FC<PropsWithChildren<{skillGroup: SkillGroupType}>> = memo(({skillGroup}) => {
+export const SkillGroup = ({skillGroup}: {skillGroup: SkillGroupType}) => {
   const {name, skills} = skillGroup;
   return (
     <>
@@ -15,16 +14,13 @@ export const SkillGroup: FC<PropsWithChildren<{skillGroup: SkillGroupType}>> = m
       </div>
     </>
   );
-});
+};
 
 SkillGroup.displayName = 'SkillGroup';
 
-export const Skill: FC<{skill: SkillType}> = memo(({skill}) => {
+export const Skill = ({skill}: {skill: SkillType}) => {
   const {name, icon} = skill;
-  const resolveSrc = useMemo(() => {
-    if (!icon) return undefined;
-    return typeof icon === 'string' ? icon : icon.src;
-  }, [icon]);
+  const resolveSrc = !icon ? undefined : typeof icon === 'string' ? icon : icon.src;
 
   return (
     <ul className="flex flex-col">
@@ -34,6 +30,6 @@ export const Skill: FC<{skill: SkillType}> = memo(({skill}) => {
       </li>
     </ul>
   );
-});
+};
 
 Skill.displayName = 'Skill';

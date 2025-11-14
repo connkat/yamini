@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import {FC, memo, useMemo} from 'react';
+import {useMemo} from 'react';
 
 import {heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
 
-const Hero: FC = memo(() => {
+const Hero = () => {
   const {name, subtitle, description, actions, avatar} = heroData;
   const resolveSrc = useMemo(() => {
     if (!avatar) return undefined;
@@ -58,7 +58,7 @@ const Hero: FC = memo(() => {
       </div>
     </Section>
   );
-});
+};
 
 Hero.displayName = 'Hero';
 export default Hero;

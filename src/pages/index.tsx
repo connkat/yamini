@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import {FC, memo} from 'react';
 
 import Page from 'components/Layout/Page';
 import About from 'components/Sections/About';
@@ -13,32 +12,32 @@ import {homePageMeta} from 'data/data';
 // eslint-disable-next-line react-memo/require-memo
 const Footer = dynamic(() => import('../components/Sections/Footer'), {ssr: false});
 
-const Home: FC = memo(() => {
+const Home = () => {
   const {title, description} = homePageMeta;
 
   return (
     <Page description={description} title={title}>
-      <section className="min-h-screen" id="welcome">
+      <section className="min-h-screen" id="Welcome">
         <Hero />
       </section>
-      <section className="min-h-screen" id="about">
+      <section className="min-h-screen" id="About">
         <About />
       </section>
-      <section className="min-h-screen" id="resume">
+      <section className="min-h-screen" id="Resume">
         <Resume />
       </section>
-      <section className="min-h-screen" id="portfolio">
+      <section className="min-h-screen" id="Portfolio">
         <Portfolio />
       </section>
-      <section className="min-h-screen" id="testimonials">
+      <section className="min-h-screen" id="Testimonials">
         <Testimonials />
       </section>
-      <section className="min-h-screen" id="contact">
+      <section className="min-h-screen" id="Contact">
         <Contact />
       </section>
       <Footer />
     </Page>
   );
-});
+};
 
 export default Home;

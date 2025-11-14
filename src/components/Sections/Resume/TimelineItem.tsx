@@ -1,8 +1,6 @@
-import {FC, memo} from 'react';
+import type {TimelineItem} from 'data/dataDef';
 
-import type {TimelineItem} from '../../../data/dataDef';
-
-const TimelineItem: FC<{item: TimelineItem; left?: boolean}> = memo(({item}) => {
+const TimelineItem = ({item}: {item: TimelineItem; left?: boolean}) => {
   const {title, date, location, content} = item;
   return (
     <div className="flex flex-col text-center last:pb-0 md:text-left">
@@ -14,7 +12,6 @@ const TimelineItem: FC<{item: TimelineItem; left?: boolean}> = memo(({item}) => 
       {content && content}
     </div>
   );
-});
+};
 
-TimelineItem.displayName = 'TimelineItem';
 export default TimelineItem;

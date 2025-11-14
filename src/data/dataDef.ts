@@ -1,7 +1,7 @@
-import { StaticImageData } from 'next/image';
-import { FC, ForwardRefExoticComponent, ReactElement, SVGProps } from 'react';
+import {StaticImageData} from 'next/image';
+import {FC, ForwardRefExoticComponent, ReactElement, SVGProps} from 'react';
 
-import { IconProps } from '../components/Icons/Icon';
+import {IconProps} from '../components/Icons/Icon';
 
 export interface HomepageMeta {
   title: string;
