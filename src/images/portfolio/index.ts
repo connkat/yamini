@@ -1,0 +1,14 @@
+export {default as airmiles} from './airmiles.png';
+export {default as gi1} from './gi1.png';
+export {default as gi2} from './gi2.png';
+export {default as goodinvesting} from './goodinvesting.png';
+export {default as gsk} from './gsk.png';
+export {default as gsk1} from './gsk1.png';
+export {default as gsk2} from './gsk2.png';
+export {default as gsk3} from './gsk3.png';
+export {default as gsk4} from './gsk4.png';
+export {default as hut8} from './hut8.png';
+export {default as pfizer} from './pfizer.png';
+export {default as Siggis} from './Siggis.png';
+export {default as TDM} from './TDM.png';
+export {default as THA} from './THA.png';
