@@ -1,7 +1,7 @@
-import {StaticImageData} from 'next/image';
-import {FC, ForwardRefExoticComponent, SVGProps} from 'react';
+import { StaticImageData } from 'next/image';
+import { FC, ForwardRefExoticComponent, ReactElement, SVGProps } from 'react';
 
-import {IconProps} from '../components/Icons/Icon';
+import { IconProps } from '../components/Icons/Icon';
 
 export interface HomepageMeta {
   title: string;
@@ -28,7 +28,7 @@ export interface ImageData {
 export interface Hero {
   name: string;
   subtitle?: string;
-  description: JSX.Element;
+  description: ReactElement;
   actions: HeroActionItem[];
   avatar?: string | StaticImageData;
 }
@@ -46,8 +46,8 @@ interface HeroActionItem {
 export interface About {
   backgroundImageSrc?: string | StaticImageData;
   profileImageSrc?: string;
-  description: JSX.Element;
-  secondParagraph?: JSX.Element;
+  description: ReactElement;
+  secondParagraph?: ReactElement;
   aboutItems: AboutItem[];
 }
 
@@ -97,7 +97,7 @@ export interface TimelineItem {
   date: string;
   location: string;
   title: string;
-  content?: JSX.Element;
+  content?: ReactElement;
   image?: string | StaticImageData;
 }
 
@@ -105,7 +105,7 @@ export interface EducationItem {
   date: string;
   location: string;
   title: string;
-  content?: JSX.Element;
+  content?: ReactElement;
   image?: ImageData;
 }
 
@@ -174,12 +174,12 @@ export interface PortfolioItem {
   title: string;
   clientOrBrand: string;
   timePeriod: string;
-  description: string | JSX.Element;
+  description: string | ReactElement;
   keyDeliverables: string;
-  whatIDid: JSX.Element;
+  whatIDid: ReactElement;
   results?: string;
   images: ImageData[];
-  videoEmbeds: JSX.Element[];
+  videoEmbeds: ReactElement[];
   heroImage: ImageData;
 }
 

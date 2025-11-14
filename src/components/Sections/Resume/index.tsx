@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, {FC, memo, useMemo, useState} from 'react';
+import {FC, memo, useMemo, useState} from 'react';
 
 import {resumeData, SectionId} from '../../../data/data';
 import Section from '../../Layout/Section';
@@ -18,9 +18,7 @@ const Resume: FC = memo(() => {
     return typeof timelineImageSrc === 'string' ? timelineImageSrc : timelineImageSrc.src;
   }, [timelineImageSrc]);
   return (
-    <Section
-      className="bg-background p-0 bg-gradient-to-br from-green via-10% via-gradient1 via-30% via-gradient2 via-50% via-gradient3 via-70% via-gradient4 to-90% to-gradient5 md:py-8"
-      sectionId={SectionId.Resume}>
+    <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
       <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center">
         <div className="window z-10 overflow-scroll mb-[3rem] w-[95%] max-w-screen-md h-[700px] sm:px-0">
           <div className="title-bar">

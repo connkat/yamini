@@ -14,10 +14,7 @@ const Hero: FC = memo(() => {
   const style = useMemo<React.CSSProperties>(() => ({objectFit: 'contain'}), []);
 
   return (
-    <Section
-      className="bg-background px-4 bg-gradient-to-br from-green via-10% via-gradient1 via-30% via-gradient2 via-50% via-gradient3 via-70% via-gradient4 to-90% to-gradient5"
-      noPadding
-      sectionId={SectionId.Hero}>
+    <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Hero}>
       <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
         <div className="window z-10 h-min sm:max-h-[90vh] mb-[3rem] sm:max-w-screen-lg sm:px-0">
           <div className="title-bar">

@@ -1,10 +1,12 @@
+import { ReactElement } from "react";
+
 export interface PortfolioItem {
   title: string;
   clientOrBrand: string;
   timePeriod: string;
   description: string;
   keyDeliverables: string;
-  whatIDid: JSX.Element;
+  whatIDid: ReactElement;
   images: string[];
   videoEmbeds: string[];
   heroImage: {

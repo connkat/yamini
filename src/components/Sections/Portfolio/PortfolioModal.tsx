@@ -144,9 +144,9 @@ const PortfolioModal: FC<PortfolioModalProps> = memo(({item, isOpen, onClose}) =
                       <div className="max-w-[300px] sm:max-w-[450px]" key={`video-${index}`}>
                         <div className="video-responsive relative">
                           {/* Apply style directly to child iframe/video element */}
-                          {cloneElement(video as React.ReactElement, {
+                          {cloneElement(video as React.ReactElement<React.HTMLAttributes<HTMLElement>>, {
                             className: 'max-w-full',
-                            style: {objectFit: 'contain'},
+                            style: {objectFit: 'contain'} as React.CSSProperties,
                           })}
                         </div>
                       </div>
