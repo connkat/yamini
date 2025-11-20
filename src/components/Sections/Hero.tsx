@@ -23,7 +23,7 @@ const Hero = () => {
             <div className="flex items-center flex-row">
               <div className="flex flex-col items-center gap-y-4 sm:gap-y-6 p-4 lg:p-6 text-center">
                 <h1 className="text-5xl font-bold text-black sm:text-6xl">{name}</h1>
-                <h2 className="hidden md:block text-base font-bold text-black sm:text-xl md:text-3xl">{subtitle}</h2>
+                <h2 className="hidden md:block text-3xl font-bold text-black sm:text-2xl md:text-4xl">{subtitle}</h2>
               </div>
               <ul className="tree-view max-h-[40vh]">
                 <Image
@@ -32,7 +32,7 @@ const Hero = () => {
                   height={1100}
                   src={resolveSrc || '/default-profile.png'}
                   style={style}
-                  width={1000}
+                  width={400}
                 />
               </ul>
             </div>

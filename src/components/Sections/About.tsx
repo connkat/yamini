@@ -32,9 +32,9 @@ const About = () => {
                   width={1536}
                 />
               </div>
-              <div className="p-2 sm:p-4">{description}</div>
+              <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{description}</div>
             </div>
-            <div className="p-2 sm:p-4">{secondParagraph}</div>
+            <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{secondParagraph}</div>
           </div>
         </div>
       </div>

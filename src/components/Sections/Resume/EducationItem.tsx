@@ -1,15 +1,11 @@
 import Image from 'next/image';
-import {FC, memo, useMemo} from 'react';
 
 import type {EducationItem} from '../../../data/dataDef';
 
-const EducationItem: FC<{item: EducationItem}> = memo(({item}) => {
+const EducationItem = ({item}: {item: EducationItem}) => {
   const {title, date, location, content, image} = item;
   const {src: imageSrc, imageWidth, imageHeight} = image || {};
-  const resolveSrc = useMemo(() => {
-    if (!imageSrc) return undefined;
-    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
-  }, [imageSrc]);
+  const resolveSrc = !imageSrc ? undefined : typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
 
   return (
     <div className="flex flex-col last:pb-0 text-center justify-start items-start p-2 sm:p-4">
@@ -33,7 +29,6 @@ const EducationItem: FC<{item: EducationItem}> = memo(({item}) => {
       </div>
     </div>
   );
-});
+};
 
-EducationItem.displayName = 'EducationItem';
 export default EducationItem;
