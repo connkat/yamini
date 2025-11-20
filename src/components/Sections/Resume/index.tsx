@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {useMemo, useState} from 'react';
+import {useState} from 'react';
 
 import {resumeData, SectionId} from '../../../data/data';
 import Section from '../../Layout/Section';
@@ -11,12 +11,8 @@ import TimelineItem from './TimelineItem';
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
-  const {education, experience, skills, clients, timelineImageSrc} = resumeData;
+  const {education, experience, skills, clients} = resumeData;
 
-  const resolveSrc = useMemo(() => {
-    if (!timelineImageSrc) return undefined;
-    return typeof timelineImageSrc === 'string' ? timelineImageSrc : timelineImageSrc.src;
-  }, [timelineImageSrc]);
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
       <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center">
@@ -45,31 +41,10 @@ const Resume = () => {
               {activeTab === 'Work' && (
                 <div aria-labelledby="work-tab" id="work-panel" role="tabpanel">
                   <ResumeSection>
-                    <div className="flex flex-row p-6 gap-y-2 justify-center items-stretch">
-                      <div className="hidden sm:flex flex-col items-center space-y-20">
-                        {experience.map(
-                          (item, index) =>
-                            index % 2 === 0 && <TimelineItem item={item} key={`${item.title}-${index}`} />,
-                        )}
-                      </div>
-                      <Image
-                        alt="work-image"
-                        className="relative object-cover"
-                        height={400}
-                        src={resolveSrc || '/default-image-path.jpg'}
-                        width={56}
-                      />
-                      <div className="flex flex-col sm:hidden gap-y-4">
-                        {experience.map((item, index) => (
-                          <TimelineItem item={item} key={`${item.title}-${index}`} />
-                        ))}
-                      </div>
-                      <div className="hidden sm:flex flex-col items-center mt-20 space-y-20">
-                        {experience.map(
-                          (item, index) =>
-                            index % 2 === 1 && <TimelineItem item={item} key={`${item.title}-${index}`} />,
-                        )}
-                      </div>
+                    <div className="grid grid-cols-1 gap-6 p-6 text-left">
+                      {experience.map((item, index) => (
+                        <TimelineItem item={item} key={`${item.title}-${index}`} />
+                      ))}
                     </div>
                   </ResumeSection>
                 </div>
