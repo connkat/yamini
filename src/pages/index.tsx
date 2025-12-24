@@ -11,7 +11,7 @@ import Testimonials from 'components/Sections/Testimonials';
 import {homePageMeta} from 'data/data';
 
 import {client} from '../sanity/lib/client';
-import {WELCOME_QUERY} from '../sanity/lib/queries';
+import {ABOUT_ME_QUERY, WELCOME_QUERY} from '../sanity/lib/queries';
 
 const Footer = dynamic(() => import('../components/Sections/Footer'), {ssr: false});
 
@@ -22,9 +22,14 @@ interface HomeProps {
     summary: string;
     resumeLink: string;
   } | null;
+  aboutMeData: {
+    image: any;
+    mainContent: string;
+    secondaryContent: string;
+  } | null;
 }
 
-const Home = ({welcomeData}: HomeProps) => {
+const Home = ({welcomeData, aboutMeData}: HomeProps) => {
   const {title, description} = homePageMeta;
 
   return (
@@ -33,7 +38,7 @@ const Home = ({welcomeData}: HomeProps) => {
         <Hero welcomeData={welcomeData} />
       </section>
       <section className="min-h-screen" id="About">
-        <About />
+        <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
         <Resume />
@@ -54,10 +59,12 @@ const Home = ({welcomeData}: HomeProps) => {
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const welcomeData = await client.fetch(WELCOME_QUERY);
+  const aboutMeData = await client.fetch(ABOUT_ME_QUERY);
 
   return {
     props: {
       welcomeData,
+      aboutMeData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

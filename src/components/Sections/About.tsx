@@ -2,10 +2,29 @@ import Image from 'next/image';
 import {useMemo} from 'react';
 
 import {aboutData, SectionId} from '../../data/data';
+import {urlFor} from '../../sanity/lib/image';
 import Section from '../Layout/Section';
 
-const About = () => {
+interface AboutProps {
+  aboutMeData: {
+    image: any;
+    mainContent: string;
+    secondaryContent: string;
+  } | null;
+}
+
+const About = ({aboutMeData}: AboutProps) => {
   const {backgroundImageSrc, profileImageSrc, description, secondParagraph} = aboutData;
+
+  const imageUrl = useMemo(() => {
+    if (aboutMeData?.image) {
+      return urlFor(aboutMeData.image).width(1536).height(2048).url();
+    }
+    return profileImageSrc;
+  }, [aboutMeData, profileImageSrc]);
+
+  const mainContent = aboutMeData?.mainContent || description;
+  const secondaryContentText = aboutMeData?.secondaryContent || secondParagraph;
   const resolveSrc = useMemo(() => {
     if (!backgroundImageSrc) return undefined;
     return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
@@ -27,14 +46,14 @@ const About = () => {
                   alt="about-me-image"
                   className="rounded-xl p-2 sm:p-4 max-h-[38vh]"
                   height={2048}
-                  src={profileImageSrc || '/default-profile.png'}
+                  src={imageUrl || '/default-profile.png'}
                   style={style}
                   width={1536}
                 />
               </div>
-              <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{description}</div>
+              <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{mainContent}</div>
             </div>
-            <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{secondParagraph}</div>
+            <div className="p-2 sm:p-4 text-lg sm:text-xl md:text-2xl">{secondaryContentText}</div>
           </div>
         </div>
       </div>
