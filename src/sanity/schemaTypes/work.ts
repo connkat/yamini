@@ -1,39 +1,34 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'aboutMe',
-  title: 'About Me',
+  name: 'work',
+  title: 'Work',
   type: 'document',
   fields: [
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'title',
+      title: 'Title',
+      type: 'text',
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'mainContent',
-      title: 'Main Content',
+      name: 'company',
+      title: 'Company',
       type: 'text',
-      rows: 6,
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'secondaryContent',
-      title: 'Secondary Content',
+      name: 'duration',
+      title: 'Duration',
       type: 'text',
-      rows: 6,
+      validation: Rule => Rule.required(),
     }),
   ],
   preview: {
     select: {
       updatedAt: '_updatedAt',
-      media: 'image',
     },
-    prepare({ updatedAt, media }) {
+    prepare({ updatedAt }) {
       return {
         title: `Last updated: ${new Date(updatedAt).toLocaleDateString('en-US', {
           year: 'numeric',
@@ -42,7 +37,6 @@ export default defineType({
           hour: '2-digit',
           minute: '2-digit',
         })}`,
-        media,
       };
     },
   },

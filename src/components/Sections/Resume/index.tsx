@@ -1,17 +1,17 @@
 import Image from 'next/image';
-import {useState} from 'react';
+import { useState } from 'react';
 
-import {resumeData, SectionId} from '../../../data/data';
+import { resumeData, SectionId } from '../../../data/data';
 import Section from '../../Layout/Section';
 
 import EducationItem from './EducationItem';
 import ResumeSection from './ResumeSection';
-import {SkillGroup} from './Skills';
+import { SkillGroup } from './Skills';
 import TimelineItem from './TimelineItem';
 
 const Resume = () => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
-  const {education, experience, skills, clients} = resumeData;
+  const { education, experience, skills, clients } = resumeData;
 
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
@@ -64,7 +64,7 @@ const Resume = () => {
                 <div aria-labelledby="clients-tab" id="clients-panel" role="tabpanel">
                   <ResumeSection>
                     <div className="flex flex-row flex-wrap items-center justify-around p-6">
-                      {clients.map(({title, image, imageHeight, imageWidth}) => (
+                      {clients.map(({ title, image, imageHeight, imageWidth }) => (
                         <div className="position-relative max-w-[100px] sm:max-w-[175px]" key={title}>
                           <Image alt={title} height={imageHeight} src={image} width={imageWidth} />
                         </div>

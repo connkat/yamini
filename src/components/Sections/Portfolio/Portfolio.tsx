@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import {FC, memo, useCallback, useMemo, useState} from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
 import Section from 'components/Layout/Section';
-import {PortfolioModal} from 'components/Sections/Portfolio';
-import {PortfolioItem, portfolioItems, portfolioSection, SectionId} from 'data';
+import { PortfolioModal } from 'components/Sections/Portfolio';
+import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'data';
 
 const Portfolio: FC = memo(() => {
-  const {folderImage, backgroundImageSrc, windowBackgroundImage} = portfolioSection;
+  const { folderImage, backgroundImageSrc, windowBackgroundImage } = portfolioSection;
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,13 +23,13 @@ const Portfolio: FC = memo(() => {
     if (!backgroundImageSrc) return undefined;
     return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
   }, [backgroundImageSrc]);
-  const style = useMemo<React.CSSProperties>(() => ({objectFit: 'contain'}), []);
-  const windowStyle = useMemo<React.CSSProperties>(() => ({objectFit: 'cover'}), []);
+  const style = useMemo<React.CSSProperties>(() => ({ objectFit: 'contain' }), []);
+  const windowStyle = useMemo<React.CSSProperties>(() => ({ objectFit: 'cover' }), []);
   return (
     <Section className="" data-scrollable noPadding sectionId={SectionId.Portfolio}>
       <div
         className="bg-cover bg-center"
-        style={backgroundImageSrc ? {backgroundImage: `url(${resolveSrc}`} : undefined}>
+        style={backgroundImageSrc ? { backgroundImage: `url(${resolveSrc}` } : undefined}>
         <div className="relative flex min-h-screen items-center justify-center p-4 lg:px-0">
           <div className="window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-[600px] sm:max-w-screen-lg sm:px-0">
             <div className="title-bar">
@@ -52,7 +52,7 @@ const Portfolio: FC = memo(() => {
               <ul className="flex flex-col h-fit gap-y-4 tree-view">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-scroll grid-rows-2" data-scrollable>
                   {portfolioItems.map((item, index) => {
-                    const {title, heroImage} = item;
+                    const { title, heroImage } = item;
                     return (
                       <div
                         className="flex p-2 items-center justify-center cursor-pointer"

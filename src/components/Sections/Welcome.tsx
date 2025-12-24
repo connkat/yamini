@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 
-import {heroData, SectionId} from '../../data/data';
+import { heroData, SectionId } from '../../data/data';
 import Section from '../Layout/Section';
 
 interface HeroProps {
@@ -13,8 +13,8 @@ interface HeroProps {
   } | null;
 }
 
-const Hero = ({welcomeData}: HeroProps) => {
-  const {actions, avatar} = heroData;
+const Welcome = ({ welcomeData }: HeroProps) => {
+  const { actions, avatar } = heroData;
 
   // Use Sanity data if available, otherwise fall back to static data
   const name = welcomeData?.title || heroData.name;
@@ -28,7 +28,7 @@ const Hero = ({welcomeData}: HeroProps) => {
     if (!avatar) return undefined;
     return typeof avatar === 'string' ? avatar : avatar.src;
   }, [avatar]);
-  const style = useMemo<React.CSSProperties>(() => ({objectFit: 'contain'}), []);
+  const style = useMemo<React.CSSProperties>(() => ({ objectFit: 'contain' }), []);
 
   return (
     <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Hero}>
@@ -59,7 +59,7 @@ const Hero = ({welcomeData}: HeroProps) => {
 
             {description}
             <div className="flex w-full justify-center gap-x-4">
-              {actions.map(({href, text, Icon}) => {
+              {actions.map(({ href, text, Icon }) => {
                 // Use resumeLink from Sanity if it's a resume button
                 const link = text === 'Resume' && welcomeData?.resumeLink ? welcomeData.resumeLink : href;
                 return (
@@ -82,5 +82,5 @@ const Hero = ({welcomeData}: HeroProps) => {
   );
 };
 
-Hero.displayName = 'Hero';
-export default Hero;
+Welcome.displayName = 'Welcome';
+export default Welcome;

@@ -1,10 +1,10 @@
-import {NextPage} from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
-import {PropsWithChildren} from 'react';
+import { PropsWithChildren } from 'react';
 
-import {HomepageMeta} from '../../data/dataDef';
+import { HomepageMeta } from '../../data/dataDef';
 
-const Page: NextPage<PropsWithChildren<HomepageMeta>> = ({children, title, description}) => {
+const Page: NextPage<PropsWithChildren<HomepageMeta>> = ({ children, title, description }) => {
   return (
     <>
       <Head>

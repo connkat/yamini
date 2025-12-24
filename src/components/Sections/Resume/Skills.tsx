@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import {Skill as SkillType, SkillGroup as SkillGroupType} from 'data/dataDef';
+import { Skill as SkillType, SkillGroup as SkillGroupType } from 'data/dataDef';
 
-export const SkillGroup = ({skillGroup}: {skillGroup: SkillGroupType}) => {
-  const {name, skills} = skillGroup;
+export const SkillGroup = ({ skillGroup }: { skillGroup: SkillGroupType }) => {
+  const { name, skills } = skillGroup;
   return (
     <>
       <div className="text-base font-bold p-2">{name}</div>
@@ -18,8 +18,8 @@ export const SkillGroup = ({skillGroup}: {skillGroup: SkillGroupType}) => {
 
 SkillGroup.displayName = 'SkillGroup';
 
-export const Skill = ({skill}: {skill: SkillType}) => {
-  const {name, icon} = skill;
+export const Skill = ({ skill }: { skill: SkillType }) => {
+  const { name, icon } = skill;
   const resolveSrc = !icon ? undefined : typeof icon === 'string' ? icon : icon.src;
 
   return (

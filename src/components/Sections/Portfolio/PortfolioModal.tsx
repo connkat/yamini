@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import {cloneElement, FC, memo, useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import { cloneElement, FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import {PortfolioItem} from 'data';
+import { PortfolioItem } from 'data';
 
 interface PortfolioModalProps {
   item: PortfolioItem | null;
@@ -9,7 +9,7 @@ interface PortfolioModalProps {
   onClose: () => void;
 }
 
-const PortfolioModal: FC<PortfolioModalProps> = memo(({item, isOpen, onClose}) => {
+const PortfolioModal: FC<PortfolioModalProps> = memo(({ item, isOpen, onClose }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const imageModalRef = useRef<HTMLDivElement>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -48,8 +48,8 @@ const PortfolioModal: FC<PortfolioModalProps> = memo(({item, isOpen, onClose}) =
     }
   }, [item]);
 
-  const imageStyle = useMemo(() => ({objectFit: 'contain' as const}), []);
-  const modalImageStyle = useMemo(() => ({maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto'}), []);
+  const imageStyle = useMemo(() => ({ objectFit: 'contain' as const }), []);
+  const modalImageStyle = useMemo(() => ({ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto' }), []);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -107,7 +107,7 @@ const PortfolioModal: FC<PortfolioModalProps> = memo(({item, isOpen, onClose}) =
             <ul
               className="tree-view h-[96%] overflow-scroll scrollbar-thin gap-4"
               data-scrollable
-              style={{overflowY: 'scroll'}}>
+              style={{ overflowY: 'scroll' }}>
               <div className="flex flex-col sm:flex-none sm:grid sm:grid-cols-3">
                 <div className="field-row-stacked p-2">
                   <p className="mb-2 font-bold text-2xl">
@@ -146,7 +146,7 @@ const PortfolioModal: FC<PortfolioModalProps> = memo(({item, isOpen, onClose}) =
                           {/* Apply style directly to child iframe/video element */}
                           {cloneElement(video as React.ReactElement<React.HTMLAttributes<HTMLElement>>, {
                             className: 'max-w-full',
-                            style: {objectFit: 'contain'} as React.CSSProperties,
+                            style: { objectFit: 'contain' } as React.CSSProperties,
                           })}
                         </div>
                       </div>

@@ -1,19 +1,19 @@
-import {GetStaticProps} from 'next';
+import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import Page from 'components/Layout/Page';
 import About from 'components/Sections/About';
 import Contact from 'components/Sections/Contact';
-import Hero from 'components/Sections/Hero';
 import Portfolio from 'components/Sections/Portfolio/Portfolio';
 import Resume from 'components/Sections/Resume';
 import Testimonials from 'components/Sections/Testimonials';
-import {homePageMeta} from 'data/data';
+import Welcome from 'components/Sections/Welcome';
+import { homePageMeta } from 'data/data';
 
-import {client} from '../sanity/lib/client';
-import {ABOUT_ME_QUERY, WELCOME_QUERY} from '../sanity/lib/queries';
+import { client } from '../sanity/lib/client';
+import { ABOUT_ME_QUERY, WELCOME_QUERY } from '../sanity/lib/queries';
 
-const Footer = dynamic(() => import('../components/Sections/Footer'), {ssr: false});
+const Footer = dynamic(() => import('../components/Sections/Footer'), { ssr: false });
 
 interface HomeProps {
   welcomeData: {
@@ -29,13 +29,13 @@ interface HomeProps {
   } | null;
 }
 
-const Home = ({welcomeData, aboutMeData}: HomeProps) => {
-  const {title, description} = homePageMeta;
+const Home = ({ welcomeData, aboutMeData }: HomeProps) => {
+  const { title, description } = homePageMeta;
 
   return (
     <Page description={description} title={title}>
       <section className="min-h-screen" id="Welcome">
-        <Hero welcomeData={welcomeData} />
+        <Welcome welcomeData={welcomeData} />
       </section>
       <section className="min-h-screen" id="About">
         <About aboutMeData={aboutMeData} />

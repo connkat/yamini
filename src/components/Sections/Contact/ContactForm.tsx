@@ -1,5 +1,5 @@
-import {send} from 'emailjs-com';
-import {FC, memo, useCallback, useMemo, useState} from 'react';
+import { send } from 'emailjs-com';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
 const ContactForm: FC = memo(() => {
   const defaultData = useMemo(
@@ -15,11 +15,11 @@ const ContactForm: FC = memo(() => {
 
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const {name, value} = event.target;
+      const { name, value } = event.target;
 
-      const fieldData: Partial<FormData> = {[name]: value};
+      const fieldData: Partial<FormData> = { [name]: value };
 
-      setData({...data, ...fieldData});
+      setData({ ...data, ...fieldData });
     },
     [data],
   );

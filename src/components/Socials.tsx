@@ -1,9 +1,9 @@
-import {socialLinks} from '../data/data';
+import { socialLinks } from '../data/data';
 
 const Socials = () => {
   return (
     <>
-      {socialLinks.map(({label, Icon, href}) => (
+      {socialLinks.map(({ label, Icon, href }) => (
         <a
           aria-label={label}
           className="-m-1.5 rounded-md p-1.5 text-black fill-black transition-all duration-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500  sm:-m-3 sm:p-3"

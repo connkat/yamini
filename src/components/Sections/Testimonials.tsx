@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import {FC, memo, useCallback, useEffect, useMemo, useState} from 'react';
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 
-import {SectionId, testimonial} from '../../data/data';
-import {Testimonial as TestimonialDef} from '../../data/dataDef';
+import { SectionId, testimonial } from '../../data/data';
+import { Testimonial as TestimonialDef } from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import Section from '../Layout/Section';
 
 const Testimonials: FC = memo(() => {
-  const {imageSrc, testimonials} = testimonial;
+  const { imageSrc, testimonials } = testimonial;
   const resolveSrc = useMemo(() => {
     if (!imageSrc) return undefined;
     return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
@@ -36,7 +36,7 @@ const Testimonials: FC = memo(() => {
 
   return (
     <Section className="bg-clouds" noPadding sectionId={SectionId.Testimonials}>
-      <div className="bg-cover bg-center" style={imageSrc ? {backgroundImage: `url(${resolveSrc})`} : undefined}>
+      <div className="bg-cover bg-center" style={imageSrc ? { backgroundImage: `url(${resolveSrc})` } : undefined}>
         <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
           <div className="window z-10 h-[400px] max-w-[90vw] sm:max-h-[90vh] mb-[3rem] sm:max-w-screen-md  sm:px-0">
             <div className="title-bar">
@@ -72,8 +72,8 @@ const Testimonials: FC = memo(() => {
   );
 });
 
-const Testimonial: FC<{testimonial: TestimonialDef; isActive: boolean}> = memo(
-  ({testimonial: {text, name}, isActive}) => (
+const Testimonial: FC<{ testimonial: TestimonialDef; isActive: boolean }> = memo(
+  ({ testimonial: { text, name }, isActive }) => (
     <ul
       className={classNames(
         'tree-view min-h-max flex h-[80%] snap-start snap-always flex-col items-start gap-y-4 p-4 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',

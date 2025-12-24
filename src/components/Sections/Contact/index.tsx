@@ -1,8 +1,8 @@
-import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
+import { DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
-import {contact, SectionId} from '../../../data/data';
-import {ContactType, ContactValue} from '../../../data/dataDef';
+import { contact, SectionId } from '../../../data/data';
+import { ContactType, ContactValue } from '../../../data/dataDef';
 import LinkedInIcon from '../../Icons/LinkedInIcon';
 import PawIcon from '../../Icons/PawIcon';
 import Section from '../../Layout/Section';
@@ -10,14 +10,14 @@ import Section from '../../Layout/Section';
 import ContactForm from './ContactForm';
 
 const ContactValueMap: Record<ContactType, ContactValue> = {
-  [ContactType.Email]: {Icon: EnvelopeIcon, srLabel: 'Email'},
-  [ContactType.Phone]: {Icon: DevicePhoneMobileIcon, srLabel: 'Phone'},
-  [ContactType.Location]: {Icon: MapPinIcon, srLabel: 'Location'},
-  [ContactType.LinkedIn]: {Icon: LinkedInIcon, srLabel: 'LinkedIn'},
-  [ContactType.RescueDogLove]: {Icon: PawIcon, srLabel: 'Rescue Dog Love'},
+  [ContactType.Email]: { Icon: EnvelopeIcon, srLabel: 'Email' },
+  [ContactType.Phone]: { Icon: DevicePhoneMobileIcon, srLabel: 'Phone' },
+  [ContactType.Location]: { Icon: MapPinIcon, srLabel: 'Location' },
+  [ContactType.LinkedIn]: { Icon: LinkedInIcon, srLabel: 'LinkedIn' },
+  [ContactType.RescueDogLove]: { Icon: PawIcon, srLabel: 'Rescue Dog Love' },
 };
 const Contact = () => {
-  const {headerText, description, items} = contact;
+  const { headerText, description, items } = contact;
   return (
     <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Contact}>
       <div className="relative flex min-h-screen sm:h-screen items-center justify-center p-8 lg:px-0">
@@ -34,8 +34,8 @@ const Contact = () => {
               </div>
               <div className="order-1 col-span-1 flex flex-col gap-y-4 md:order-2">
                 <dl className="flex flex-col text-base text-neutral-500 space-y-4">
-                  {items.map(({type, text, href}) => {
-                    const {Icon, srLabel} = ContactValueMap[type];
+                  {items.map(({ type, text, href }) => {
+                    const { Icon, srLabel } = ContactValueMap[type];
                     return (
                       <div key={srLabel}>
                         <dt className="sr-only">{srLabel}</dt>
@@ -43,7 +43,7 @@ const Contact = () => {
                           <a
                             className={classNames(
                               '-m-2 flex rounded-md p-2 text-black hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500',
-                              {'hover:text-white': href},
+                              { 'hover:text-white': href },
                             )}
                             href={href}
                             target="_blank">

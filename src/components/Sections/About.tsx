@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import {useMemo} from 'react';
+import { useMemo } from 'react';
 
-import {aboutData, SectionId} from '../../data/data';
-import {urlFor} from '../../sanity/lib/image';
+import { aboutData, SectionId } from '../../data/data';
+import { urlFor } from '../../sanity/lib/image';
 import Section from '../Layout/Section';
 
 interface AboutProps {
@@ -13,8 +13,8 @@ interface AboutProps {
   } | null;
 }
 
-const About = ({aboutMeData}: AboutProps) => {
-  const {backgroundImageSrc, profileImageSrc, description, secondParagraph} = aboutData;
+const About = ({ aboutMeData }: AboutProps) => {
+  const { backgroundImageSrc, profileImageSrc, description, secondParagraph } = aboutData;
 
   const imageUrl = useMemo(() => {
     if (aboutMeData?.image) {
@@ -29,12 +29,12 @@ const About = ({aboutMeData}: AboutProps) => {
     if (!backgroundImageSrc) return undefined;
     return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
   }, [backgroundImageSrc]);
-  const style = useMemo<React.CSSProperties>(() => ({objectFit: 'contain'}), []);
+  const style = useMemo<React.CSSProperties>(() => ({ objectFit: 'contain' }), []);
   return (
     <Section noPadding sectionId={SectionId.About}>
       <div
         className="bg-cover bg-center"
-        style={backgroundImageSrc ? {backgroundImage: `url(${resolveSrc}`} : undefined}>
+        style={backgroundImageSrc ? { backgroundImage: `url(${resolveSrc}` } : undefined}>
         <div className="relative flex min-h-screen sm:max-h-screen  items-center justify-center p-8 lg:px-0">
           <div className="window z-10 w-full max-w-[95vw] sm:max-w-screen-lg lg:max-w-screen-xl sm:px-0">
             <div className="title-bar bg-gray-800/60">

@@ -1,14 +1,14 @@
-import {Dialog, Transition} from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import {FC, Fragment, memo, useCallback, useMemo, useState} from 'react';
+import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
 
 import Socials from 'components/Socials';
-import {SectionId} from 'data';
-import {useNavObserver} from 'hooks';
-import {Clients, contact, homepage, Resume, START, testimonials} from 'images';
-import {about} from 'images/icons';
+import { SectionId } from 'data';
+import { useNavObserver } from 'hooks';
+import { Clients, contact, homepage, Resume, START, testimonials } from 'images';
+import { about } from 'images/icons';
 
 export const headerID = 'headerNav';
 
@@ -16,12 +16,12 @@ const Footer: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const navSections = useMemo(
     () => [
-      {name: SectionId.Hero, image: homepage},
-      {name: SectionId.About, image: about},
-      {name: SectionId.Resume, image: Resume},
-      {name: SectionId.Portfolio, image: Clients},
-      {name: SectionId.Testimonials, image: testimonials},
-      {name: SectionId.Contact, image: contact},
+      { name: SectionId.Hero, image: homepage },
+      { name: SectionId.About, image: about },
+      { name: SectionId.Resume, image: Resume },
+      { name: SectionId.Portfolio, image: Clients },
+      { name: SectionId.Testimonials, image: testimonials },
+      { name: SectionId.Contact, image: contact },
     ],
     [],
   );
@@ -42,8 +42,8 @@ const Footer: FC = memo(() => {
 
 // -2px_-2px_#818181,-2px_0_#818181,0_-2px_#818181,-4px_-4px_black,-4px_0_black,0_-4px_black,2px_2px_#e0dede,0_2px_#e0dede,2px_0_#e0dede,2px_-2px_#818181,-2px_2px_#e0dede,-4px_2px_black,-4px_4px_white,4px_4px_white,4px_0_white,0_4px_white,2px_-4px_black,4px_-4px_white
 
-const DesktopNav: FC<{navSections: {name: SectionId; image: string}[]; currentSection: SectionId | null}> = memo(
-  ({navSections, currentSection}) => {
+const DesktopNav: FC<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }> = memo(
+  ({ navSections, currentSection }) => {
     const baseClass =
       '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
     const activeClass = classNames(baseClass, 'text-orange-500');
@@ -88,8 +88,8 @@ const DesktopNav: FC<{navSections: {name: SectionId; image: string}[]; currentSe
     );
   },
 );
-const MobileNav: FC<{navSections: {name: SectionId; image: string}[]; currentSection: SectionId | null}> = memo(
-  ({navSections, currentSection}) => {
+const MobileNav: FC<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }> = memo(
+  ({ navSections, currentSection }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleOpen = useCallback(() => {
@@ -168,7 +168,7 @@ const NavItem: FC<{
   onClick?: () => void;
   image: string;
   hideName?: boolean;
-}> = memo(({section, current, inactiveClass, activeClass, onClick, image, hideName}) => {
+}> = memo(({ section, current, inactiveClass, activeClass, onClick, image, hideName }) => {
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}
@@ -190,7 +190,7 @@ const MobileNavItem: FC<{
   onClick?: () => void;
   image: string;
   hideName?: boolean;
-}> = memo(({section, current, inactiveClass, activeClass, onClick, image, hideName}) => {
+}> = memo(({ section, current, inactiveClass, activeClass, onClick, image, hideName }) => {
   return (
     <Link
       className={classNames(current ? activeClass : inactiveClass)}

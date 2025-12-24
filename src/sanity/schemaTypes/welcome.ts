@@ -34,8 +34,18 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'subtitle',
+      updatedAt: '_updatedAt',
+    },
+    prepare({ updatedAt }) {
+      return {
+        title: `Last updated: ${new Date(updatedAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        })}`,
+      };
     },
   },
 });

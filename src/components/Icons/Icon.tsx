@@ -3,7 +3,7 @@ export interface IconProps extends React.HTMLAttributes<SVGSVGElement> {
   transform?: string;
 }
 
-const Icon = ({children, className, svgRef, transform, ...props}: IconProps) => (
+const Icon = ({ children, className, svgRef, transform, ...props }: IconProps) => (
   <svg
     className={className}
     fill="currentColor"

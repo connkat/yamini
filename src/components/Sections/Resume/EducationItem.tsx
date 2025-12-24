@@ -1,10 +1,10 @@
 import Image from 'next/image';
 
-import type {EducationItem} from '../../../data/dataDef';
+import type { EducationItem } from '../../../data/dataDef';
 
-const EducationItem = ({item}: {item: EducationItem}) => {
-  const {title, date, location, content, image} = item;
-  const {src: imageSrc, imageWidth, imageHeight} = image || {};
+const EducationItem = ({ item }: { item: EducationItem }) => {
+  const { title, date, location, content, image } = item;
+  const { src: imageSrc, imageWidth, imageHeight } = image || {};
   const resolveSrc = !imageSrc ? undefined : typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
 
   return (

@@ -1,7 +1,7 @@
-import type {TimelineItem} from 'data/dataDef';
+import type { TimelineItem } from 'data/dataDef';
 
-const TimelineItem = ({item}: {item: TimelineItem; left?: boolean}) => {
-  const {title, date, location, content} = item;
+const TimelineItem = ({ item }: { item: TimelineItem; left?: boolean }) => {
+  const { title, date, location, content } = item;
   return (
     <div className="flex flex-col text-left last:pb-0">
       <div className="flex flex-col sm:max-w-[250px]">

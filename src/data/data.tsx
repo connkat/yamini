@@ -146,10 +146,10 @@ export const aboutData: About = {
     </p>
   ),
   aboutItems: [
-    {label: 'Location', text: 'Toronto, ON', Icon: MapIcon},
-    {label: 'Interests', text: 'Rescue Dogs, Stardew Valley, Countess Luann', Icon: SparklesIcon},
-    {label: 'Study', text: 'Kings College, Halifax', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'YCPR Inc', Icon: BuildingOffice2Icon},
+    { label: 'Location', text: 'Toronto, ON', Icon: MapIcon },
+    { label: 'Interests', text: 'Rescue Dogs, Stardew Valley, Countess Luann', Icon: SparklesIcon },
+    { label: 'Study', text: 'Kings College, Halifax', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'YCPR Inc', Icon: BuildingOffice2Icon },
   ],
 };
 
@@ -409,9 +409,9 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/yaminicoen/'},
-  {label: 'Resume', Icon: ArrowDownTrayIcon, href: '/Yamini_Coen_Resume.pdf'},
-  {label: 'Rescue Dog Love', Icon: PawIcon, href: 'https://www.rescuedoglove.com'},
+  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/yaminicoen/' },
+  { label: 'Resume', Icon: ArrowDownTrayIcon, href: '/Yamini_Coen_Resume.pdf' },
+  { label: 'Rescue Dog Love', Icon: PawIcon, href: 'https://www.rescuedoglove.com' },
 ];
 
 export const portfolioItems: PortfolioItem[] = [
