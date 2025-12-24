@@ -1,3 +1,4 @@
+import {GetStaticProps} from 'next';
 import dynamic from 'next/dynamic';
 
 import Page from 'components/Layout/Page';
@@ -9,15 +10,27 @@ import Resume from 'components/Sections/Resume';
 import Testimonials from 'components/Sections/Testimonials';
 import {homePageMeta} from 'data/data';
 
+import {client} from '../sanity/lib/client';
+import {WELCOME_QUERY} from '../sanity/lib/queries';
+
 const Footer = dynamic(() => import('../components/Sections/Footer'), {ssr: false});
 
-const Home = () => {
+interface HomeProps {
+  welcomeData: {
+    title: string;
+    subtitle: string;
+    summary: string;
+    resumeLink: string;
+  } | null;
+}
+
+const Home = ({welcomeData}: HomeProps) => {
   const {title, description} = homePageMeta;
 
   return (
     <Page description={description} title={title}>
       <section className="min-h-screen" id="Welcome">
-        <Hero />
+        <Hero welcomeData={welcomeData} />
       </section>
       <section className="min-h-screen" id="About">
         <About />
@@ -37,6 +50,17 @@ const Home = () => {
       <Footer />
     </Page>
   );
+};
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const welcomeData = await client.fetch(WELCOME_QUERY);
+
+  return {
+    props: {
+      welcomeData,
+    },
+    revalidate: 60, // Revalidate every 60 seconds
+  };
 };
 
 export default Home;

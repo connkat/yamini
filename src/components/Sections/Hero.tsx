@@ -4,8 +4,26 @@ import {useMemo} from 'react';
 import {heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
 
-const Hero = () => {
-  const {name, subtitle, description, actions, avatar} = heroData;
+interface HeroProps {
+  welcomeData: {
+    title: string;
+    subtitle: string;
+    summary: string;
+    resumeLink: string;
+  } | null;
+}
+
+const Hero = ({welcomeData}: HeroProps) => {
+  const {actions, avatar} = heroData;
+
+  // Use Sanity data if available, otherwise fall back to static data
+  const name = welcomeData?.title || heroData.name;
+  const subtitle = welcomeData?.subtitle || heroData.subtitle;
+  const description = welcomeData?.summary ? (
+    <p className="text-black-200 prose sm:prose-lg md:prose-2xl">{welcomeData.summary}</p>
+  ) : (
+    heroData.description
+  );
   const resolveSrc = useMemo(() => {
     if (!avatar) return undefined;
     return typeof avatar === 'string' ? avatar : avatar.src;
@@ -41,17 +59,21 @@ const Hero = () => {
 
             {description}
             <div className="flex w-full justify-center gap-x-4">
-              {actions.map(({href, text, Icon}) => (
-                <button key={text}>
-                  <a
-                    className="flex gap-x-2 bg-none px-4 py-2 text-lg font-medium text-black hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-offset-2"
-                    href={href}
-                    target="_blank">
-                    {text}
-                    {Icon && <Icon className="h-5 w-5 text-black sm:h-6 sm:w-6" />}
-                  </a>
-                </button>
-              ))}
+              {actions.map(({href, text, Icon}) => {
+                // Use resumeLink from Sanity if it's a resume button
+                const link = text === 'Resume' && welcomeData?.resumeLink ? welcomeData.resumeLink : href;
+                return (
+                  <button key={text}>
+                    <a
+                      className="flex gap-x-2 bg-none px-4 py-2 text-lg font-medium text-black hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                      href={link}
+                      target="_blank">
+                      {text}
+                      {Icon && <Icon className="h-5 w-5 text-black sm:h-6 sm:w-6" />}
+                    </a>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>

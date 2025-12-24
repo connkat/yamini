@@ -1,0 +1,19 @@
+[build]
+  command = "yarn run build"
+  publish = ".next"
+
+[build.environment]
+  # Sanity project IDs and dataset names are public by design
+  # They are used client-side and are not sensitive
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_API_VERSION"
+
+# Cache Next.js build output
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_next/image*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
