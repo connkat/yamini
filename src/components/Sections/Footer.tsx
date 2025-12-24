@@ -16,7 +16,7 @@ const Footer: FC = memo(() => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
   const navSections = useMemo(
     () => [
-      { name: SectionId.Hero, image: homepage },
+      { name: SectionId.Welcome, image: homepage },
       { name: SectionId.About, image: about },
       { name: SectionId.Resume, image: Resume },
       { name: SectionId.Portfolio, image: Clients },

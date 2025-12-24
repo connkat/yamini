@@ -21,6 +21,7 @@ interface HomeProps {
     subtitle: string;
     summary: string;
     resumeLink: string;
+    image: any;
   } | null;
   aboutMeData: {
     image: any;

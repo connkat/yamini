@@ -10,7 +10,6 @@ import LinkedInIcon from '../components/Icons/LinkedInIcon';
 import PawIcon from '../components/Icons/PawIcon';
 import {
   airmiles,
-  avatar,
   book,
   camera,
   certificate,
@@ -54,7 +53,6 @@ import {
   ContactSection,
   ContactType,
   EducationItem,
-  Hero,
   HomepageMeta,
   PortfolioItem,
   PortfolioSection,
@@ -78,7 +76,7 @@ export const homePageMeta: HomepageMeta = {
  * Section definition
  */
 export const SectionId = {
-  Hero: 'Welcome',
+  Welcome: 'Welcome',
   About: 'About',
   Contact: 'Contact',
   Portfolio: 'Portfolio',
@@ -89,41 +87,6 @@ export const SectionId = {
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
-
-/**
- * Hero section
- */
-export const heroData: Hero = {
-  name: `Yamini Coen`,
-  subtitle: 'Communications, Public Relations and Social Media Strategy',
-  description: (
-    <>
-      <p className="text-black-200 prose sm:prose-lg md:prose-2xl">
-        Hello! Welcome to my page. Are you looking for some help with your brand’s marketing and communications
-        strategies? Needing some social media advice, or just plainly someone to do it for you? You’re at the right
-        place!{' '}
-      </p>
-      <p className="text-black-200 prose sm:prose-lg md:prose-2xl">
-        Nice to meet you! I’m Yamini, a communications, public relations and digital marketing expert based out of
-        Toronto, Canada.{' '}
-      </p>
-    </>
-  ),
-  actions: [
-    {
-      href: '/Yamini_Coen_Resume.pdf',
-      text: 'Resume',
-      primary: true,
-      Icon: ArrowDownTrayIcon,
-    },
-    {
-      href: `#${SectionId.Contact}`,
-      text: 'Contact',
-      primary: false,
-    },
-  ],
-  avatar: avatar,
-};
 
 /**
  * About section

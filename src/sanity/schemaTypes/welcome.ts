@@ -31,6 +31,14 @@ export default defineType({
           scheme: ['http', 'https'],
         }),
     }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
   ],
   preview: {
     select: {

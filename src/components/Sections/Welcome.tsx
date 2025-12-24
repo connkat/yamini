@@ -1,7 +1,8 @@
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import { useMemo } from 'react';
 
-import { heroData, SectionId } from '../../data/data';
+import { SectionId } from '../../data/data';
+import { urlFor } from '../../sanity/lib/image';
 import Section from '../Layout/Section';
 
 interface HeroProps {
@@ -10,28 +11,29 @@ interface HeroProps {
     subtitle: string;
     summary: string;
     resumeLink: string;
+    image: any;
   } | null;
 }
 
 const Welcome = ({ welcomeData }: HeroProps) => {
-  const { actions, avatar } = heroData;
+  const actions = [
+    {
+      href: '/Yamini_Coen_Resume.pdf',
+      text: 'Resume',
+      primary: true,
+      Icon: ArrowDownTrayIcon,
+    },
+    {
+      href: `#${SectionId.Contact}`,
+      text: 'Contact',
+      primary: false,
+    },
+  ];
 
-  // Use Sanity data if available, otherwise fall back to static data
-  const name = welcomeData?.title || heroData.name;
-  const subtitle = welcomeData?.subtitle || heroData.subtitle;
-  const description = welcomeData?.summary ? (
-    <p className="text-black-200 prose sm:prose-lg md:prose-2xl">{welcomeData.summary}</p>
-  ) : (
-    heroData.description
-  );
-  const resolveSrc = useMemo(() => {
-    if (!avatar) return undefined;
-    return typeof avatar === 'string' ? avatar : avatar.src;
-  }, [avatar]);
-  const style = useMemo<React.CSSProperties>(() => ({ objectFit: 'contain' }), []);
+  const imageUrl = welcomeData?.image ? urlFor(welcomeData.image).height(1100).url() : null;
 
   return (
-    <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Hero}>
+    <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Welcome}>
       <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
         <div className="window z-10 h-min sm:max-h-[90vh] mb-[3rem] sm:max-w-screen-lg sm:px-0">
           <div className="title-bar">
@@ -40,27 +42,29 @@ const Welcome = ({ welcomeData }: HeroProps) => {
           <div className="flex flex-col items-center gap-y-4 sm:gap-y-6 p-4 lg:p-6 text-center">
             <div className="flex items-center flex-row">
               <div className="flex flex-col items-center gap-y-4 sm:gap-y-6 p-4 lg:p-6 text-center">
-                <h1 className="text-5xl font-bold text-black sm:text-6xl">{name}</h1>
-                <h2 className="hidden md:block text-3xl font-bold text-black sm:text-2xl md:text-4xl">{subtitle}</h2>
+                <h1 className="text-5xl font-bold text-black sm:text-6xl">{welcomeData?.title}</h1>
+                <h2 className="hidden md:block text-3xl font-bold text-black sm:text-2xl md:text-4xl">
+                  {welcomeData?.subtitle}
+                </h2>
               </div>
               <ul className="tree-view max-h-[40vh]">
-                <Image
-                  alt="avatar"
-                  className="max-h-[30vh]"
-                  height={1100}
-                  src={resolveSrc || '/default-profile.png'}
-                  style={style}
-                  width={400}
-                />
+                {imageUrl && (
+                  <Image
+                    alt="avatar"
+                    className="max-h-[30vh]"
+                    height={1100}
+                    src={imageUrl}
+                    style={{ objectFit: 'contain' }}
+                    width={400}
+                  />
+                )}
               </ul>
             </div>
 
-            <h2 className="md:hidden text-base font-bold text-black sm:text-xl">{subtitle}</h2>
-
-            {description}
+            <h2 className="md:hidden text-base font-bold text-black sm:text-xl">{welcomeData?.subtitle}</h2>
+            <p className="text-black-200 prose sm:prose-lg md:prose-2xl">{welcomeData?.summary}</p>
             <div className="flex w-full justify-center gap-x-4">
               {actions.map(({ href, text, Icon }) => {
-                // Use resumeLink from Sanity if it's a resume button
                 const link = text === 'Resume' && welcomeData?.resumeLink ? welcomeData.resumeLink : href;
                 return (
                   <button key={text}>
