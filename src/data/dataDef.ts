@@ -3,20 +3,6 @@ import { FC, ForwardRefExoticComponent, ReactElement, SVGProps } from 'react';
 
 import { IconProps } from '../components/Icons/Icon';
 
-export interface HomepageMeta {
-  title: string;
-  description: string;
-  ogImageUrl?: string;
-  twitterCardType?: 'summary' | 'summary_large';
-  twitterTitle?: string;
-  twitterSite?: string;
-  twitterCreator?: string;
-  twitterDomain?: string;
-  twitterUrl?: string;
-  twitterDescription?: string;
-  twitterImageUrl?: string;
-}
-
 export interface ImageData {
   src: string | StaticImageData;
   imageHeight?: number;
@@ -44,9 +30,6 @@ interface HeroActionItem {
  * About section
  */
 export interface About {
-  backgroundImageSrc?: string | StaticImageData;
-  profileImageSrc?: string;
-  description: ReactElement;
   secondParagraph?: ReactElement;
   aboutItems: AboutItem[];
 }

@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import { client } from 'sanity/lib/client';
 import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
 import { About, Contact, Page, Portfolio, ResumeSection, Testimonials, Welcome } from 'src/components';
-import { homePageMeta } from 'src/data';
 
 const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
 
@@ -32,10 +31,14 @@ interface HomeProps {
 }
 
 const Home = ({ welcomeData, aboutMeData, workData }: HomeProps) => {
-  const { title, description } = homePageMeta;
+  const homePageMeta = {
+    title: 'Yamini Coen - Communications, Public Relations and Social Media Strategy',
+    description:
+      "Business site for Yamini Coen, built by danunder with significant modifications to Tim Baker's react resume template",
+  };
 
   return (
-    <Page description={description} title={title}>
+    <Page description={homePageMeta.description} title={homePageMeta.title}>
       <section className="min-h-screen" id="Welcome">
         <Welcome welcomeData={welcomeData} />
       </section>

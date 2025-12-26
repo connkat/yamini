@@ -1,13 +1,19 @@
-import {
-  AcademicCapIcon,
-  ArrowDownTrayIcon,
-  BuildingOffice2Icon,
-  MapIcon,
-  SparklesIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
-import LinkedInIcon from '../components/Icons/LinkedInIcon';
-import PawIcon from '../components/Icons/PawIcon';
+import { LinkedInIcon, PawIcon } from 'src/components';
+import {
+  Client,
+  ContactSection,
+  ContactType,
+  EducationItem,
+  PortfolioItem,
+  PortfolioSection,
+  Resume,
+  SkillGroup,
+  Social,
+  TestimonialSection,
+  TimelineItem,
+} from 'src/data';
 import {
   airmiles,
   book,
@@ -36,7 +42,6 @@ import {
   paint,
   people,
   pfizer,
-  profilepic,
   Siggis,
   sound,
   strategy,
@@ -45,32 +50,7 @@ import {
   timeline,
   videocamera,
   YCPR,
-} from '../images';
-
-import {
-  About,
-  Client,
-  ContactSection,
-  ContactType,
-  EducationItem,
-  HomepageMeta,
-  PortfolioItem,
-  PortfolioSection,
-  Resume,
-  SkillGroup,
-  Social,
-  TestimonialSection,
-  TimelineItem,
-} from './dataDef';
-
-/**
- * Page meta data
- */
-export const homePageMeta: HomepageMeta = {
-  title: 'Yamini Coen - Communications, Public Relations and Social Media Strategy',
-  description:
-    "Business site for Yamini Coen, built by danunder with significant modifications to Tim Baker's react resume template",
-};
+} from 'src/images';
 
 /**
  * Section definition
@@ -87,34 +67,6 @@ export const SectionId = {
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
-
-/**
- * About section
- */
-export const aboutData: About = {
-  backgroundImageSrc: hillsImage,
-  profileImageSrc: profilepic,
-  description: (
-    <p className="prose-sm text-black-200 sm:prose-xl">
-      I’m Yamini, a communications, public relations and digital marketing expert based out of Toronto, Canada. I have
-      been working in the marketing sphere, with a focus on communications, public relations and digital marketing, for
-      over 7 years. I’ve worked with brands across sectors, including financial services, fintech, consumer, health,
-      wellness and more.
-    </p>
-  ),
-  secondParagraph: (
-    <p className="prose-sm text-black-200 sm:prose-xl">
-      I'm passionate about anti-racism, 2SLGBTQIA+ issues, social justice, diversity, equity and inclusion and
-      incorporate that framework in all of my counsel and tactical recommendations.{' '}
-    </p>
-  ),
-  aboutItems: [
-    { label: 'Location', text: 'Toronto, ON', Icon: MapIcon },
-    { label: 'Interests', text: 'Rescue Dogs, Stardew Valley, Countess Luann', Icon: SparklesIcon },
-    { label: 'Study', text: 'Kings College, Halifax', Icon: AcademicCapIcon },
-    { label: 'Employment', text: 'YCPR Inc', Icon: BuildingOffice2Icon },
-  ],
-};
 
 /**
  * Skills section
