@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Clients, EducationItem, Section, SkillGroup, TimelineItem } from 'src/components';
 import type { TimelineItem as TimelineItemType } from 'src/data';
-import { education, SectionId } from 'src/data';
+import { SectionId } from 'src/data';
 
 interface ResumeProps {
   workData:
@@ -27,9 +27,18 @@ interface ResumeProps {
         url?: string;
       }[]
     | null;
+  educationData:
+    | {
+        title: string;
+        school: string;
+        date: string;
+        major?: string;
+        image: any;
+      }[]
+    | null;
 }
 
-const ResumeSection = ({ workData, skillsData, clientsData }: ResumeProps) => {
+const ResumeSection = ({ workData, skillsData, clientsData, educationData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
 
   const workItems: TimelineItemType[] = workData || [];
@@ -100,7 +109,7 @@ const ResumeSection = ({ workData, skillsData, clientsData }: ResumeProps) => {
                     className="tree-view h-[550px] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="flex flex-col py-12 h-full items-center justify-around">
-                      {education.map((item, index) => (
+                      {educationData?.map((item, index) => (
                         <EducationItem item={item} key={`${item.title}-${index}`} />
                       ))}
                     </div>

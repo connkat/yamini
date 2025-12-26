@@ -2,10 +2,8 @@ import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
 import { LinkedInIcon, PawIcon } from 'src/components';
 import {
-  Client,
   ContactSection,
   ContactType,
-  EducationItem,
   PortfolioItem,
   PortfolioSection,
   Resume,
@@ -14,29 +12,18 @@ import {
   TimelineItem,
 } from 'src/data';
 import {
-  airmiles,
-  book,
-  certificate,
   clouds as cloudsImage,
   folder,
   gi1,
   gi2,
-  goodinvesting,
-  gsk,
   gsk1,
   gsk2,
   gsk3,
   gsk4,
   hills as hillsImage,
-  hut8,
   media2,
-  network,
-  paint,
   people,
   pfizer,
-  Siggis,
-  TDM,
-  THA,
   timeline,
   videocamera,
   YCPR,
@@ -59,43 +46,8 @@ export const SectionId = {
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
 
 /**
- * Resume section -- TODO: Standardize resume contact format or offer MDX
+ * Resume section
  */
-export const education: EducationItem[] = [
-  {
-    date: '2017',
-    location: 'Humber College',
-    title: 'Public Relations Diploma',
-    image: {
-      src: certificate,
-      imageHeight: 32,
-      imageWidth: 32,
-    },
-  },
-  {
-    date: '2013',
-    location: 'University of Toronto',
-    title: 'Master of Arts',
-    content: <p className="text-center font-bold sm:text-base">Comparative Literature</p>,
-    image: {
-      src: book,
-      imageHeight: 48,
-      imageWidth: 48,
-    },
-  },
-  {
-    date: '2013',
-    location: "University of King's College",
-    title: 'Bachelor of Arts with Honours',
-    content: <p className="text-center font-bold sm:text-base">English Literature & Philosophy</p>,
-    image: {
-      src: paint,
-      imageHeight: 48,
-      imageWidth: 48,
-    },
-  },
-];
-
 export const experience: TimelineItem[] = [
   {
     duration: '2023 - Present',
@@ -107,7 +59,7 @@ export const experience: TimelineItem[] = [
 
 export const resumeData: Resume = {
   timelineImageSrc: timeline,
-  education: education,
+  education: [],
   experience: experience,
 };
 /**

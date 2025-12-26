@@ -1,29 +1,36 @@
 import Image from 'next/image';
 
-import type { EducationItem as EducationItemType } from 'src/data';
+import { urlFor } from 'sanity/lib/image';
 
-const EducationItem = ({ item }: { item: EducationItemType }) => {
-  const { title, date, location, content, image } = item;
-  const { src: imageSrc, imageWidth, imageHeight } = image || {};
-  const resolveSrc = !imageSrc ? undefined : typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
+interface EducationItem {
+  title: string;
+  school: string;
+  date: string;
+  major?: string;
+  image: any;
+}
+
+const EducationItem = ({ item }: { item: EducationItem }) => {
+  const { title, date, school, major, image } = item;
+  const imageUrl = image ? urlFor(image).width(48).height(48).url() : null;
 
   return (
     <div className="flex flex-col last:pb-0 text-center justify-start items-start p-2 sm:p-4">
       <div className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4">
-        {resolveSrc && (
+        {imageUrl && (
           <div className="relative h-8 w-8 md:h-10 md:w-10">
-            <Image alt={title} className="" height={imageHeight} src={resolveSrc} width={imageWidth} />
+            <Image alt={title} className="" height={48} src={imageUrl} width={48} />
           </div>
         )}
         <div className="flex flex-col items-center sm:max-w-[300px]">
-          <h2 className="text-base sm:text-xl font-bold">{title}</h2>
-          <div className="flex-1 text-md sm:text-lg font-medium italic ">{location}</div>
+          <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
+          {major && <p className="text-center font-bold sm:text-base">{major}</p>}
+          <div className="flex-1 text-md sm:text-lg font-medium italic ">{school}</div>
           <div className="flex-1 text-md sm:text-lg ">{date}</div>
-          {content && content}
         </div>
-        {resolveSrc && (
+        {imageUrl && (
           <div className="relative h-8 w-8 md:h-10 md:w-10">
-            <Image alt={title} className="" height={imageHeight} src={resolveSrc} width={imageWidth} />
+            <Image alt={title} className="" height={48} src={imageUrl} width={48} />
           </div>
         )}
       </div>

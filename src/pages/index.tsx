@@ -2,7 +2,14 @@ import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import { client } from 'sanity/lib/client';
-import { ABOUT_ME_QUERY, CLIENTS_QUERY, SKILLS_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
+import {
+  ABOUT_ME_QUERY,
+  CLIENTS_QUERY,
+  EDUCATION_QUERY,
+  SKILLS_QUERY,
+  WELCOME_QUERY,
+  WORK_QUERY,
+} from 'sanity/lib/queries';
 import { About, Contact, Page, Portfolio, ResumeSection, Testimonials, Welcome } from 'src/components';
 
 const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
@@ -42,9 +49,18 @@ interface HomeProps {
         url?: string;
       }[]
     | null;
+  educationData:
+    | {
+        title: string;
+        school: string;
+        date: string;
+        major?: string;
+        image: any;
+      }[]
+    | null;
 }
 
-const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData }: HomeProps) => {
+const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData, educationData }: HomeProps) => {
   return (
     <Page>
       <section className="min-h-screen" id="Welcome">
@@ -54,7 +70,12 @@ const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData }: H
         <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
-        <ResumeSection clientsData={clientsData} skillsData={skillsData} workData={workData} />
+        <ResumeSection
+          clientsData={clientsData}
+          educationData={educationData}
+          skillsData={skillsData}
+          workData={workData}
+        />
       </section>
       <section className="min-h-screen" id="Portfolio">
         <Portfolio />
@@ -76,6 +97,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const workData = await client.fetch(WORK_QUERY);
   const skillsData = await client.fetch(SKILLS_QUERY);
   const clientsData = await client.fetch(CLIENTS_QUERY);
+  const educationData = await client.fetch(EDUCATION_QUERY);
 
   return {
     props: {
@@ -84,6 +106,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       workData,
       skillsData,
       clientsData,
+      educationData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

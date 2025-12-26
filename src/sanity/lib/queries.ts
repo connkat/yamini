@@ -34,3 +34,11 @@ export const CLIENTS_QUERY = defineQuery(`*[_type == "clients"] | order(order as
   image,
   url
 }`);
+
+export const EDUCATION_QUERY = defineQuery(`*[_type == "education"] | order(order asc){
+  title,
+  school,
+  date,
+  major,
+  image
+}`);
