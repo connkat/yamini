@@ -1,4 +1,4 @@
-import type { TimelineItem } from 'data/dataDef';
+import type { TimelineItem } from 'src/data';
 
 const TimelineItem = ({ item }: { item: TimelineItem; left?: boolean }) => {
   const { title, duration, company } = item;

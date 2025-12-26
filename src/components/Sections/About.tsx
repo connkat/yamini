@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { useMemo } from 'react';
 
+import { urlFor } from 'sanity/lib/image';
 import { Section } from 'src/components';
-import { aboutData, SectionId } from 'src/data/data';
-import { urlFor } from 'src/sanity/lib/image';
+import { aboutData, SectionId } from 'src/data';
 
 interface AboutProps {
   aboutMeData: {

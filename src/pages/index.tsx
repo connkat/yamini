@@ -3,8 +3,8 @@ import dynamic from 'next/dynamic';
 
 import { client } from 'sanity/lib/client';
 import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
-import { About, Contact, Page, Portfolio, Resume, Testimonials, Welcome } from 'src/components';
-import { homePageMeta } from 'src/data/data';
+import { About, Contact, Page, Portfolio, ResumeSection, Testimonials, Welcome } from 'src/components';
+import { homePageMeta } from 'src/data';
 
 const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
 
@@ -43,7 +43,7 @@ const Home = ({ welcomeData, aboutMeData, workData }: HomeProps) => {
         <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
-        <Resume workData={workData} />
+        <ResumeSection workData={workData} />
       </section>
       <section className="min-h-screen" id="Portfolio">
         <Portfolio />

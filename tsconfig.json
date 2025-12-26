@@ -23,9 +23,6 @@
       "src/*": ["src/*"],
       "sanity": ["src/sanity"],
       "sanity/*": ["src/sanity/*"],
-      "data/*": ["src/data/*"],
-      "hooks": ["src/hooks"],
-      "hooks/*": ["src/hooks/*"],
       "images": ["src/images"],
       "images/*": ["src/images/*"],
       "types/*": ["src/types/*"]
