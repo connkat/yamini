@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'clients',
-  title: 'Clients',
+  name: 'testimonials',
+  title: 'Testimonials',
   type: 'document',
   fields: [
     defineField({
@@ -21,51 +21,33 @@ export default defineType({
           { title: '8', value: 8 },
           { title: '9', value: 9 },
           { title: '10', value: 10 },
-          { title: '11', value: 11 },
-          { title: '12', value: 12 },
-          { title: '13', value: 13 },
-          { title: '14', value: 14 },
-          { title: '15', value: 15 },
         ],
       },
       validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'name',
-      title: 'Client Name',
+      title: 'Name',
       type: 'string',
       validation: Rule => Rule.required(),
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'text',
+      title: 'Testimonial Text',
+      type: 'text',
       validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'url',
-      title: 'URL',
-      type: 'url',
-      validation: Rule =>
-        Rule.uri({
-          scheme: ['http', 'https'],
-        }),
     }),
   ],
   preview: {
     select: {
       title: 'name',
+      subtitle: 'text',
       order: 'order',
-      media: 'image',
     },
-    prepare({ title, order, media }) {
+    prepare({ title, subtitle, order }) {
       return {
         title: title || 'Untitled',
-        subtitle: `Order: ${order}`,
-        media,
+        subtitle: `Order: ${order} - ${subtitle?.substring(0, 60)}...`,
       };
     },
   },

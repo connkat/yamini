@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { Clients, EducationItem, Section, SkillGroup, TimelineItem } from 'src/components';
-import type { TimelineItem as TimelineItemType } from 'src/data';
 import { SectionId } from 'src/data';
 
 interface ResumeProps {
@@ -41,7 +40,7 @@ interface ResumeProps {
 const ResumeSection = ({ workData, skillsData, clientsData, educationData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
 
-  const workItems: TimelineItemType[] = workData || [];
+  const workItems = workData || [];
 
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>

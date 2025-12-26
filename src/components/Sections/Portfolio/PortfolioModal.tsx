@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { cloneElement, FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, useEffect, useRef, useState } from 'react';
 
-import { PortfolioItem } from 'data';
+import { PortfolioItem } from 'src/data';
 
 interface PortfolioModalProps {
   item: PortfolioItem | null;
@@ -9,47 +9,42 @@ interface PortfolioModalProps {
   onClose: () => void;
 }
 
-const PortfolioModal: FC<PortfolioModalProps> = memo(({ item, isOpen, onClose }) => {
+const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const imageModalRef = useRef<HTMLDivElement>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  const handleBackdropClick = useCallback(
-    (e: React.MouseEvent) => {
-      if (e.target === modalRef.current) {
-        onClose();
-      }
-    },
-    [onClose],
-  );
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === modalRef.current) {
+      onClose();
+    }
+  };
 
-  const handleImageModalBackdropClick = useCallback((e: React.MouseEvent) => {
+  const handleImageModalBackdropClick = (e: React.MouseEvent) => {
     if (e.target === imageModalRef.current) {
       setSelectedImageIndex(null);
     }
-  }, []);
+  };
 
-  const handleThumbnailClick = useCallback((index: number) => {
+  const handleThumbnailClick = (index: number) => {
     setSelectedImageIndex(index);
-  }, []);
+  };
 
-  const handleFullImageClick = useCallback(() => {
+  const handleFullImageClick = () => {
     if (!item || !item.images.length) return;
 
     if (item.images.length === 1) {
-      // If only one image, close the modal
       setSelectedImageIndex(null);
     } else {
-      // Cycle to next image
       setSelectedImageIndex(prevIndex => {
         if (prevIndex === null) return 0;
         return (prevIndex + 1) % item.images.length;
       });
     }
-  }, [item]);
+  };
 
-  const imageStyle = useMemo(() => ({ objectFit: 'contain' as const }), []);
-  const modalImageStyle = useMemo(() => ({ maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto' }), []);
+  const imageStyle: React.CSSProperties = { objectFit: 'contain' };
+  const modalImageStyle: React.CSSProperties = { maxWidth: '90vw', maxHeight: '90vh', width: 'auto', height: 'auto' };
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -185,7 +180,5 @@ const PortfolioModal: FC<PortfolioModalProps> = memo(({ item, isOpen, onClose })
       )}
     </>
   );
-});
-
-PortfolioModal.displayName = 'PortfolioModal';
+};
 export default PortfolioModal;

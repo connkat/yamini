@@ -1,29 +1,30 @@
 import Image from 'next/image';
-import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { PortfolioModal, Section } from 'src/components';
 import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'src/data';
 
-const Portfolio: FC = memo(() => {
+const Portfolio = () => {
   const { folderImage, backgroundImageSrc, windowBackgroundImage } = portfolioSection;
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = useCallback((item: PortfolioItem) => {
+  const handleOpenModal = (item: PortfolioItem) => {
     setSelectedItem(item);
     setIsModalOpen(true);
-  }, []);
+  };
 
-  const handleCloseModal = useCallback(() => {
+  const handleCloseModal = () => {
     setIsModalOpen(false);
-  }, []);
+  };
 
   const resolveSrc = useMemo(() => {
     if (!backgroundImageSrc) return undefined;
     return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
   }, [backgroundImageSrc]);
-  const style = useMemo<React.CSSProperties>(() => ({ objectFit: 'contain' }), []);
-  const windowStyle = useMemo<React.CSSProperties>(() => ({ objectFit: 'cover' }), []);
+
+  const style: React.CSSProperties = { objectFit: 'contain' };
+  const windowStyle: React.CSSProperties = { objectFit: 'cover' };
   return (
     <Section className="" data-scrollable noPadding sectionId={SectionId.Portfolio}>
       <div
@@ -105,7 +106,5 @@ const Portfolio: FC = memo(() => {
       <PortfolioModal isOpen={isModalOpen} item={selectedItem} onClose={handleCloseModal} />
     </Section>
   );
-});
-
-Portfolio.displayName = 'Portfolio';
+};
 export default Portfolio;

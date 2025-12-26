@@ -1,40 +1,29 @@
 import { send } from 'emailjs-com';
-import { FC, memo, useCallback, useMemo, useState } from 'react';
+import { useState } from 'react';
 
-const ContactForm: FC = memo(() => {
-  const defaultData = useMemo(
-    () => ({
-      name: '',
-      email: '',
-      message: '',
-    }),
-    [],
-  );
+const ContactForm = () => {
+  const defaultData = {
+    name: '',
+    email: '',
+    message: '',
+  };
 
   const [data, setData] = useState(defaultData);
 
-  const onChange = useCallback(
-    <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const { name, value } = event.target;
+  const onChange = <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
+    const { name, value } = event.target;
+    const fieldData: Partial<FormData> = { [name]: value };
+    setData({ ...data, ...fieldData });
+  };
 
-      const fieldData: Partial<FormData> = { [name]: value };
-
-      setData({ ...data, ...fieldData });
-    },
-    [data],
-  );
-
-  const handleSendMessage = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      const sendContactForm = await send('service_h7gyf1f', 'template_gnhl8ae', data, 'G6eEBrc4xlK5qHbHK');
-      if (sendContactForm.status === 200) {
-        send('service_h7gyf1f', 'template_3n1cl2t', data, 'G6eEBrc4xlK5qHbHK');
-        setData(defaultData);
-      }
-    },
-    [data, defaultData],
-  );
+  const handleSendMessage = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const sendContactForm = await send('service_h7gyf1f', 'template_gnhl8ae', data, 'G6eEBrc4xlK5qHbHK');
+    if (sendContactForm.status === 200) {
+      send('service_h7gyf1f', 'template_3n1cl2t', data, 'G6eEBrc4xlK5qHbHK');
+      setData(defaultData);
+    }
+  };
 
   const inputClasses =
     'border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-sm placeholder:text-indigo-400 text-black text-sm';
@@ -68,7 +57,6 @@ const ContactForm: FC = memo(() => {
       </button>
     </form>
   );
-});
+};
 
-ContactForm.displayName = 'ContactForm';
 export default ContactForm;

@@ -42,3 +42,8 @@ export const EDUCATION_QUERY = defineQuery(`*[_type == "education"] | order(orde
   major,
   image
 }`);
+
+export const TESTIMONIALS_QUERY = defineQuery(`*[_type == "testimonials"] | order(order asc){
+  name,
+  text
+}`);

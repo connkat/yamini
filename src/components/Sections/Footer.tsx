@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
+import { Fragment, memo, useState } from 'react';
 
 import { Socials } from 'src/components';
 import { SectionId } from 'src/data';
@@ -12,23 +12,21 @@ import { about } from 'src/images/icons';
 
 export const headerID = 'headerNav';
 
-const Footer: FC = memo(() => {
+const Footer = () => {
   const [currentSection, setCurrentSection] = useState<SectionId | null>(null);
-  const navSections = useMemo(
-    () => [
-      { name: SectionId.Welcome, image: homepage },
-      { name: SectionId.About, image: about },
-      { name: SectionId.Resume, image: Resume },
-      { name: SectionId.Portfolio, image: Clients },
-      { name: SectionId.Testimonials, image: testimonials },
-      { name: SectionId.Contact, image: contact },
-    ],
-    [],
-  );
 
-  const intersectionHandler = useCallback((section: SectionId | null) => {
+  const navSections = [
+    { name: SectionId.Welcome, image: homepage },
+    { name: SectionId.About, image: about },
+    { name: SectionId.Resume, image: Resume },
+    { name: SectionId.Portfolio, image: Clients },
+    { name: SectionId.Testimonials, image: testimonials },
+    { name: SectionId.Contact, image: contact },
+  ];
+
+  const intersectionHandler = (section: SectionId | null) => {
     section && setCurrentSection(section);
-  }, []);
+  };
 
   useNavObserver(navSections.map(section => `#${section.name}`).join(','), intersectionHandler);
 
@@ -38,11 +36,11 @@ const Footer: FC = memo(() => {
       <DesktopNav currentSection={currentSection} navSections={navSections} />
     </>
   );
-});
+};
 
 // -2px_-2px_#818181,-2px_0_#818181,0_-2px_#818181,-4px_-4px_black,-4px_0_black,0_-4px_black,2px_2px_#e0dede,0_2px_#e0dede,2px_0_#e0dede,2px_-2px_#818181,-2px_2px_#e0dede,-4px_2px_black,-4px_4px_white,4px_4px_white,4px_0_white,0_4px_white,2px_-4px_black,4px_-4px_white
 
-const DesktopNav: FC<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }> = memo(
+const DesktopNav = memo<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }>(
   ({ navSections, currentSection }) => {
     const baseClass =
       '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
@@ -88,13 +86,13 @@ const DesktopNav: FC<{ navSections: { name: SectionId; image: string }[]; curren
     );
   },
 );
-const MobileNav: FC<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }> = memo(
+const MobileNav = memo<{ navSections: { name: SectionId; image: string }[]; currentSection: SectionId | null }>(
   ({ navSections, currentSection }) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const toggleOpen = useCallback(() => {
+    const toggleOpen = () => {
       setIsOpen(!isOpen);
-    }, [isOpen]);
+    };
 
     const baseClass =
       '-m-1.5 p-1.5 rounded-md font-bold first-letter:uppercase hover:transition-colors hover:duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 sm:hover:text-orange-500 text-neutral-100';
@@ -160,50 +158,70 @@ const MobileNav: FC<{ navSections: { name: SectionId; image: string }[]; current
   },
 );
 
-const NavItem: FC<{
-  section: string;
-  current: boolean;
-  activeClass: string;
-  inactiveClass: string;
-  onClick?: () => void;
-  image: string;
-  hideName?: boolean;
-}> = memo(({ section, current, inactiveClass, activeClass, onClick, image, hideName }) => {
-  return (
-    <Link
-      className={classNames(current ? activeClass : inactiveClass)}
-      href={`/#${section}`}
-      key={section}
-      onClick={onClick}>
-      <div className={`p-2 flex gap-x-2 max-w-fit shadow-win98${current ? '-active' : ''}`}>
-        <Image alt={section} height={22.5} src={image} />
-        {!hideName && <p className="text-black text-base">{section}</p>}
-      </div>
-    </Link>
-  );
-});
-const MobileNavItem: FC<{
-  section: string;
-  current: boolean;
-  activeClass: string;
-  inactiveClass: string;
-  onClick?: () => void;
-  image: string;
-  hideName?: boolean;
-}> = memo(({ section, current, inactiveClass, activeClass, onClick, image, hideName }) => {
-  return (
-    <Link
-      className={classNames(current ? activeClass : inactiveClass)}
-      href={`/#${section}`}
-      key={section}
-      onClick={onClick}>
-      <div className="p-2 flex gap-x-2 max-w-fit">
-        <Image alt={section} height={22.5} src={image} />
-        {!hideName && <p className="text-black text-base">{section}</p>}
-      </div>
-    </Link>
-  );
-});
+const NavItem = memo(
+  ({
+    section,
+    current,
+    inactiveClass,
+    activeClass,
+    onClick,
+    image,
+    hideName,
+  }: {
+    section: string;
+    current: boolean;
+    activeClass: string;
+    inactiveClass: string;
+    onClick?: () => void;
+    image: string;
+    hideName?: boolean;
+  }) => {
+    return (
+      <Link
+        className={classNames(current ? activeClass : inactiveClass)}
+        href={`/#${section}`}
+        key={section}
+        onClick={onClick}>
+        <div className={`p-2 flex gap-x-2 max-w-fit shadow-win98${current ? '-active' : ''}`}>
+          <Image alt={section} height={22.5} src={image} />
+          {!hideName && <p className="text-black text-base">{section}</p>}
+        </div>
+      </Link>
+    );
+  },
+);
 
-Footer.displayName = 'Footer';
+const MobileNavItem = memo(
+  ({
+    section,
+    current,
+    inactiveClass,
+    activeClass,
+    onClick,
+    image,
+    hideName,
+  }: {
+    section: string;
+    current: boolean;
+    activeClass: string;
+    inactiveClass: string;
+    onClick?: () => void;
+    image: string;
+    hideName?: boolean;
+  }) => {
+    return (
+      <Link
+        className={classNames(current ? activeClass : inactiveClass)}
+        href={`/#${section}`}
+        key={section}
+        onClick={onClick}>
+        <div className="p-2 flex gap-x-2 max-w-fit">
+          <Image alt={section} height={22.5} src={image} />
+          {!hideName && <p className="text-black text-base">{section}</p>}
+        </div>
+      </Link>
+    );
+  },
+);
+
 export default Footer;

@@ -1,51 +1,47 @@
 import classNames from 'classnames';
-import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 
-import { SectionId, testimonial } from '../../data/data';
-import { Testimonial as TestimonialDef } from '../../data/dataDef';
-import useInterval from '../../hooks/useInterval';
-import Section from '../Layout/Section';
+import { Section } from 'src/components';
+import { SectionId } from 'src/data';
+import { useInterval } from 'src/hooks';
+import { clouds as cloudsImage } from 'src/images';
 
-const Testimonials: FC = memo(() => {
-  const { imageSrc, testimonials } = testimonial;
-  const resolveSrc = useMemo(() => {
-    if (!imageSrc) return undefined;
-    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
-  }, [imageSrc]);
+interface Testimonial {
+  name: string;
+  text: string;
+}
 
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const [activeTestimonial, setActiveTestimonial] = useState<TestimonialDef | null>(testimonials[0]);
-  useEffect(() => {
-    setActiveTestimonial(testimonials[activeIndex]);
-  }, [activeIndex, testimonials]);
+interface TestimonialsProps {
+  testimonialsData: Testimonial[] | null;
+}
 
-  const next = useCallback(() => {
-    if (activeIndex + 1 === testimonials.length) {
-      setActiveIndex(0);
-    } else {
-      setActiveIndex(activeIndex + 1);
-    }
-  }, [activeIndex, testimonials.length]);
+const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
+  const testimonials = testimonialsData || [];
+  const cloudsUrl = (cloudsImage as any).src || cloudsImage;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const next = () => {
+    setActiveIndex(current => (current + 1 === testimonials.length ? 0 : current + 1));
+  };
 
   useInterval(next, 10000);
 
-  // If no testimonials, don't render the section
   if (!testimonials.length) {
     return null;
   }
 
+  const activeTestimonial = testimonials[activeIndex];
+
   return (
     <Section className="bg-clouds" noPadding sectionId={SectionId.Testimonials}>
-      <div className="bg-cover bg-center" style={imageSrc ? { backgroundImage: `url(${resolveSrc})` } : undefined}>
+      <div className="bg-cover bg-center" style={{ backgroundImage: `url(${cloudsUrl})` }}>
         <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
           <div className="window z-10 h-[400px] max-w-[90vw] sm:max-h-[90vh] mb-[3rem] sm:max-w-screen-md  sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Testimonials</div>
             </div>
             <div className="flex flex-col h-[90%] justify-between p-4 lg:p-6 text-left">
-              {activeTestimonial && (
-                <Testimonial isActive key={`${activeTestimonial.name}`} testimonial={activeTestimonial} />
-              )}
+              <TestimonialItem isActive key={`${activeTestimonial?.name}`} testimonial={activeTestimonial} />
 
               <div className="flex flex-row justify-around items-center p-2 sm:p-4">
                 {[...Array(testimonials.length)].map((_, index) => {
@@ -70,21 +66,25 @@ const Testimonials: FC = memo(() => {
       </div>
     </Section>
   );
-});
+};
 
-const Testimonial: FC<{ testimonial: TestimonialDef; isActive: boolean }> = memo(
-  ({ testimonial: { text, name }, isActive }) => (
-    <ul
-      className={classNames(
-        'tree-view min-h-max flex h-[80%] snap-start snap-always flex-col items-start gap-y-4 p-4 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
-        isActive ? 'opacity-100' : 'opacity-0',
-      )}>
-      <div className="flex flex-col p-2 gap-y-4">
-        <p className="prose prose-sm font-medium italic text-black sm:prose-xl">{text}</p>
-        <p className="text-xs italic text-black sm:text-sm md:text-base lg:text-xl">-- {name}</p>
-      </div>
-    </ul>
-  ),
+const TestimonialItem = ({
+  testimonial: { text, name },
+  isActive,
+}: {
+  testimonial: Testimonial;
+  isActive: boolean;
+}) => (
+  <ul
+    className={classNames(
+      'tree-view min-h-max flex h-[80%] snap-start snap-always flex-col items-start gap-y-4 p-4 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
+      isActive ? 'opacity-100' : 'opacity-0',
+    )}>
+    <div className="flex flex-col p-2 gap-y-4">
+      <p className="prose prose-sm font-medium italic text-black sm:prose-xl">{text}</p>
+      <p className="text-xs italic text-black sm:text-sm md:text-base lg:text-xl">-- {name}</p>
+    </div>
+  </ul>
 );
 
 export default Testimonials;

@@ -1,18 +1,8 @@
 import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 
 import { LinkedInIcon, PawIcon } from 'src/components';
+import { ContactSection, ContactType, PortfolioItem, PortfolioSection, Social } from 'src/data';
 import {
-  ContactSection,
-  ContactType,
-  PortfolioItem,
-  PortfolioSection,
-  Resume,
-  Social,
-  TestimonialSection,
-  TimelineItem,
-} from 'src/data';
-import {
-  clouds as cloudsImage,
   folder,
   gi1,
   gi2,
@@ -24,7 +14,6 @@ import {
   media2,
   people,
   pfizer,
-  timeline,
   videocamera,
   YCPR,
 } from 'src/images';
@@ -44,48 +33,6 @@ export const SectionId = {
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
-
-/**
- * Resume section
- */
-export const experience: TimelineItem[] = [
-  {
-    duration: '2023 - Present',
-    company: 'YCPR',
-    title: 'Founder',
-    order: 1,
-  },
-];
-
-export const resumeData: Resume = {
-  timelineImageSrc: timeline,
-  education: [],
-  experience: experience,
-};
-/**
- * Testimonial section
- */
-export const testimonial: TestimonialSection = {
-  imageSrc: cloudsImage,
-  testimonials: [
-    {
-      name: 'Tim Nash, Good Investing',
-      text: "Yamini has been an integral part of growing my business, using her knowledge across the board on client communications, organizing long-term partnerships and growing our brand new Classroom platform. They've also begun producing my podcast and YouTube series, helping make content creation efficient while delivering results.",
-    },
-    {
-      name: 'Christina Antoniou, Pfizer Canada',
-      text: 'As a client, I appreciate her responsiveness, organized approach and the great service level she provides. She is a great communicator, and know the social media landscape very well.',
-    },
-    {
-      name: 'Eric Tang, Porter Novelli Canada',
-      text: "When you work with Yamini, her positive energy is so powerful that you can't help but want to bring your best game to the table.",
-    },
-    {
-      name: 'Arnold Lee, Hut 8 Mining',
-      text: 'Her passion for her work was evident in every project she undertook, consistently going above and beyond to ensure the best outcome. Her communication skills were exceptional, always articulating her ideas clearly and effectively, which greatly contributed to our team’s success.',
-    },
-  ],
-};
 
 /**
  * Contact section

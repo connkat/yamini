@@ -7,6 +7,7 @@ import {
   CLIENTS_QUERY,
   EDUCATION_QUERY,
   SKILLS_QUERY,
+  TESTIMONIALS_QUERY,
   WELCOME_QUERY,
   WORK_QUERY,
 } from 'sanity/lib/queries';
@@ -58,9 +59,23 @@ interface HomeProps {
         image: any;
       }[]
     | null;
+  testimonialsData:
+    | {
+        name: string;
+        text: string;
+      }[]
+    | null;
 }
 
-const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData, educationData }: HomeProps) => {
+const Home = ({
+  welcomeData,
+  aboutMeData,
+  workData,
+  skillsData,
+  clientsData,
+  educationData,
+  testimonialsData,
+}: HomeProps) => {
   return (
     <Page>
       <section className="min-h-screen" id="Welcome">
@@ -81,7 +96,7 @@ const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData, edu
         <Portfolio />
       </section>
       <section className="min-h-screen" id="Testimonials">
-        <Testimonials />
+        <Testimonials testimonialsData={testimonialsData} />
       </section>
       <section className="min-h-screen" id="Contact">
         <Contact />
@@ -98,6 +113,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const skillsData = await client.fetch(SKILLS_QUERY);
   const clientsData = await client.fetch(CLIENTS_QUERY);
   const educationData = await client.fetch(EDUCATION_QUERY);
+  const testimonialsData = await client.fetch(TESTIMONIALS_QUERY);
 
   return {
     props: {
@@ -107,6 +123,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       skillsData,
       clientsData,
       educationData,
+      testimonialsData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

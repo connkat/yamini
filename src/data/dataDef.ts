@@ -29,30 +29,6 @@ export interface Client {
 }
 
 /**
- * Resume section
- */
-export interface TimelineItem {
-  duration: string;
-  company: string;
-  title: string;
-  order: number;
-}
-
-export interface EducationItem {
-  date: string;
-  location: string;
-  title: string;
-  content?: ReactElement;
-  image?: ImageData;
-}
-
-export interface Resume {
-  timelineImageSrc?: string | StaticImageData;
-  education: EducationItem[];
-  experience: TimelineItem[];
-}
-
-/**
  * Testimonial section
  */
 export interface TestimonialSection {
