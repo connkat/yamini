@@ -1,15 +1,15 @@
+import nextPlugin from '@next/eslint-plugin-next';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import importPlugin from 'eslint-plugin-import';
 import react from 'eslint-plugin-react';
-import reactMemo from 'eslint-plugin-react-memo';
 import reactHooks from 'eslint-plugin-react-hooks';
-import nextPlugin from '@next/eslint-plugin-next';
+import reactMemo from 'eslint-plugin-react-memo';
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
   {
-    ignores: ['**/public/**', '**/node_modules/**', '**/.next/**', '**/dist/**', '**/*.md'],
+    ignores: ['**/public/**', '**/node_modules/**', '**/.next/**', '**/dist/**', '**/out/**', '**/*.md'],
   },
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -57,7 +57,7 @@ export default [
       'import/no-duplicates': 'error',
       'import/order': 'off',
       'no-irregular-whitespace': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn', {argsIgnorePattern: '^_'}],
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'react/jsx-curly-brace-presence': [2, 'never'],
       'react/jsx-no-duplicate-props': 'error',
       'react/jsx-sort-props': 'error',
@@ -74,8 +74,8 @@ export default [
             ['^node:'],
             // External packages (react, next, etc.)
             ['^@?\\w'],
-            // Internal absolute imports (components, data, hooks, images, types)
-            ['^(components|data|hooks|images|types)(/.*|$)'],
+            // Internal absolute imports (src/, sanity/, components, data, hooks, images, types)
+            ['^(src|sanity|components|data|hooks|images|types)(/.*|$)'],
             // Parent imports (../)
             ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
             // Sibling imports (./)

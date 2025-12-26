@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
+
 import { Socials } from 'src/components';
 import { SectionId } from 'src/data';
 import { useNavObserver } from 'src/hooks';

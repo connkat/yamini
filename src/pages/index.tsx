@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
+
 import { client } from 'sanity/lib/client';
 import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
 import { About, Contact, Page, Portfolio, Resume, Testimonials, Welcome } from 'src/components';

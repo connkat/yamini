@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import { resumeData, SectionId } from '../../../data/data';
-import type { TimelineItem as TimelineItemType } from '../../../data/dataDef';
-import Section from '../../Layout/Section';
+import Section from 'src/components/Layout/Section';
+import { resumeData, SectionId } from 'src/data/data';
+import type { TimelineItem as TimelineItemType } from 'src/data/dataDef';
 
 import EducationItem from './EducationItem';
 import ResumeSection from './ResumeSection';

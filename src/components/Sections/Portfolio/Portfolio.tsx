@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { FC, memo, useCallback, useMemo, useState } from 'react';
+
 import { PortfolioModal, Section } from 'src/components';
 import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'src/data';
 

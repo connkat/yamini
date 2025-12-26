@@ -1,11 +1,11 @@
 import { ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
-import { SectionId } from '../../data/data';
-import { urlFor } from '../../sanity/lib/image';
-import Section from '../Layout/Section';
+import { Section } from 'src/components';
+import { SectionId } from 'src/data/data';
+import { urlFor } from 'src/sanity/lib/image';
 
-interface HeroProps {
+interface WelcomeProps {
   welcomeData: {
     title: string;
     subtitle: string;
@@ -15,7 +15,7 @@ interface HeroProps {
   } | null;
 }
 
-const Welcome = ({ welcomeData }: HeroProps) => {
+const Welcome = ({ welcomeData }: WelcomeProps) => {
   const actions = [
     {
       href: '/Yamini_Coen_Resume.pdf',
