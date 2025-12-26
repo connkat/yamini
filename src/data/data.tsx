@@ -9,7 +9,6 @@ import {
   PortfolioItem,
   PortfolioSection,
   Resume,
-  SkillGroup,
   Social,
   TestimonialSection,
   TimelineItem,
@@ -17,11 +16,8 @@ import {
 import {
   airmiles,
   book,
-  camera,
   certificate,
   clouds as cloudsImage,
-  crisis,
-  defragment,
   folder,
   gi1,
   gi2,
@@ -33,18 +29,12 @@ import {
   gsk4,
   hills as hillsImage,
   hut8,
-  influencer,
-  media,
   media2,
-  minesweeper,
   network,
-  note,
   paint,
   people,
   pfizer,
   Siggis,
-  sound,
-  strategy,
   TDM,
   THA,
   timeline,
@@ -67,70 +57,6 @@ export const SectionId = {
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
-
-/**
- * Skills section
- */
-export const skills: SkillGroup[] = [
-  {
-    name: 'Communications and Public Relations',
-    skills: [
-      {
-        name: 'External Communications Strategies',
-        icon: strategy,
-      },
-      {
-        name: 'Diversity, Equity and Inclusion Framework',
-        icon: defragment,
-      },
-      {
-        name: 'Media Relations',
-        icon: media2,
-      },
-      {
-        name: 'Crisis Communications and Strategy',
-        icon: crisis,
-      },
-      {
-        name: 'Internal Communications Strategies',
-        icon: note,
-      },
-      {
-        name: 'Event Management',
-        icon: sound,
-      },
-      {
-        name: 'Media Monitoring and Reporting',
-        icon: media,
-      },
-    ],
-  },
-  {
-    name: 'Social Media and Digital Marketing',
-    skills: [
-      {
-        name: 'Social Media Analysis, Planning and Execution',
-        icon: network,
-      },
-      {
-        name: 'Influencer Marketing',
-        icon: influencer,
-      },
-      {
-        name: 'Content Creation including Video, Photography and Audio (Podcasting)',
-        icon: camera,
-      },
-      {
-        name: 'Community Management',
-        icon: people,
-      },
-      {
-        name: 'Social Media Monitoring',
-        icon: minesweeper,
-      },
-    ],
-  },
-];
 
 /**
  * Portfolio section
@@ -237,7 +163,6 @@ export const resumeData: Resume = {
   timelineImageSrc: timeline,
   education: education,
   experience: experience,
-  skills: skills,
   clients: clients,
 };
 /**

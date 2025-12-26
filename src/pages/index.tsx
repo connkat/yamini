@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import { client } from 'sanity/lib/client';
-import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
+import { ABOUT_ME_QUERY, SKILLS_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
 import { About, Contact, Page, Portfolio, ResumeSection, Testimonials, Welcome } from 'src/components';
 
 const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
@@ -28,17 +28,18 @@ interface HomeProps {
         order: number;
       }[]
     | null;
+  skillsData:
+    | {
+        name: string;
+        icon: any;
+        skills: { name: string }[];
+      }[]
+    | null;
 }
 
-const Home = ({ welcomeData, aboutMeData, workData }: HomeProps) => {
-  const homePageMeta = {
-    title: 'Yamini Coen - Communications, Public Relations and Social Media Strategy',
-    description:
-      "Business site for Yamini Coen, built by danunder with significant modifications to Tim Baker's react resume template",
-  };
-
+const Home = ({ welcomeData, aboutMeData, workData, skillsData }: HomeProps) => {
   return (
-    <Page description={homePageMeta.description} title={homePageMeta.title}>
+    <Page>
       <section className="min-h-screen" id="Welcome">
         <Welcome welcomeData={welcomeData} />
       </section>
@@ -46,7 +47,7 @@ const Home = ({ welcomeData, aboutMeData, workData }: HomeProps) => {
         <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
-        <ResumeSection workData={workData} />
+        <ResumeSection skillsData={skillsData} workData={workData} />
       </section>
       <section className="min-h-screen" id="Portfolio">
         <Portfolio />
@@ -66,12 +67,14 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const welcomeData = await client.fetch(WELCOME_QUERY);
   const aboutMeData = await client.fetch(ABOUT_ME_QUERY);
   const workData = await client.fetch(WORK_QUERY);
+  const skillsData = await client.fetch(SKILLS_QUERY);
 
   return {
     props: {
       welcomeData,
       aboutMeData,
       workData,
+      skillsData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

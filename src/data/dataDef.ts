@@ -27,40 +27,12 @@ interface HeroActionItem {
 }
 
 /**
- * About section
- */
-export interface About {
-  secondParagraph?: ReactElement;
-  aboutItems: AboutItem[];
-}
-
-export interface AboutItem {
-  label: string;
-  text: string;
-  Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
-}
-
-/**
  * Stat section
  */
 export interface Stat {
   title: string;
   value: number;
   Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
-}
-
-/**
- * Skills section
- */
-
-export interface Skill {
-  name: string;
-  icon?: string | StaticImageData;
-}
-
-export interface SkillGroup {
-  name: string;
-  skills: Skill[];
 }
 
 /**
@@ -93,7 +65,6 @@ export interface EducationItem {
 
 export interface Resume {
   timelineImageSrc?: string | StaticImageData;
-  skills: SkillGroup[];
   education: EducationItem[];
   experience: TimelineItem[];
   clients: Client[];

@@ -2,26 +2,27 @@ import { NextPage } from 'next';
 import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 
-interface PageProps {
-  title: string;
-  description: string;
-}
-
-const Page: NextPage<PropsWithChildren<PageProps>> = ({ children, title, description }) => {
+const Page: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta content={description} name="description" />
+        <title>'Yamini Coen - Communications, Public Relations and Social Media Strategy'</title>
+        <meta content="Yamini Coen - Communications, Public Relations and Social Media Strategy" name="description" />
 
         <link href="/favicon.ico" rel="icon" />
         <link href="/site.webmanifest" rel="manifest" />
 
-        <meta content={title} property="og:title" />
-        <meta content={description} property="og:description" />
+        <meta content="Yamini Coen - Communications, Public Relations and Social Media Strategy" property="og:title" />
+        <meta
+          content="Yamini Coen - Communications, Public Relations and Social Media Strategy"
+          property="og:description"
+        />
 
-        <meta content={title} name="twitter:title" />
-        <meta content={description} name="twitter:description" />
+        <meta content="Yamini Coen - Communications, Public Relations and Social Media Strategy" name="twitter:title" />
+        <meta
+          content="Yamini Coen - Communications, Public Relations and Social Media Strategy"
+          name="twitter:description"
+        />
       </Head>
       {children}
     </>

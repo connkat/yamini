@@ -14,11 +14,18 @@ interface ResumeProps {
         order: number;
       }[]
     | null;
+  skillsData:
+    | {
+        name: string;
+        icon: any;
+        skills: { name: string }[];
+      }[]
+    | null;
 }
 
-const ResumeSection = ({ workData }: ResumeProps) => {
+const ResumeSection = ({ workData, skillsData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
-  const { education, experience, skills, clients } = resumeData;
+  const { education, experience, clients } = resumeData;
 
   const workItems: TimelineItemType[] = workData
     ? workData.map(work => ({
@@ -71,7 +78,7 @@ const ResumeSection = ({ workData }: ResumeProps) => {
                     className="tree-view h-[550px] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="pl-4">
-                      {skills.map((skillgroup, index) => (
+                      {skillsData?.map((skillgroup, index) => (
                         <SkillGroup key={`${skillgroup.name}-${index}`} skillGroup={skillgroup} />
                       ))}
                     </div>

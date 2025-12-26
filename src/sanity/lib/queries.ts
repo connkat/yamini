@@ -20,3 +20,11 @@ export const WORK_QUERY = defineQuery(`*[_type == "work"] | order(order asc){
   duration,
   order
 }`);
+
+export const SKILLS_QUERY = defineQuery(`*[_type == "skillGroup"] | order(order asc){
+  name,
+  icon,
+  skills[]{
+    name
+  }
+}`);
