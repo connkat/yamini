@@ -1,6 +1,6 @@
-import type { TimelineItem } from 'src/data';
+import type { TimelineItem as TimelineItemType } from 'src/data';
 
-const TimelineItem = ({ item }: { item: TimelineItem; left?: boolean }) => {
+const TimelineItem = ({ item }: { item: TimelineItemType; left?: boolean }) => {
   const { title, duration, company } = item;
   return (
     <div className="flex flex-col text-left last:pb-0">

@@ -59,60 +59,6 @@ export const SectionId = {
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
 
 /**
- * Portfolio section
- */
-export const clients: Client[] = [
-  {
-    title: 'Pfizer',
-    image: pfizer,
-    imageHeight: 723,
-    imageWidth: 1213,
-  },
-  {
-    title: 'Glaxo Smith Kline',
-    image: gsk,
-    imageHeight: 660,
-    imageWidth: 880,
-  },
-  {
-    title: 'Air Miles',
-    image: airmiles,
-    imageHeight: 564,
-    imageWidth: 610,
-  },
-  {
-    title: "Siggi's",
-    image: Siggis,
-    imageHeight: 145,
-    imageWidth: 410,
-  },
-  {
-    title: 'Hut 8 Mining',
-    image: hut8,
-    imageHeight: 738,
-    imageWidth: 1681,
-  },
-  {
-    title: 'Taylor Hazell Architects',
-    image: THA,
-    imageHeight: 67,
-    imageWidth: 225,
-  },
-  {
-    title: 'Toronto Dog Mums',
-    image: TDM,
-    imageHeight: 500,
-    imageWidth: 500,
-  },
-  {
-    title: 'Good Investing',
-    image: goodinvesting,
-    imageHeight: 1117,
-    imageWidth: 2500,
-  },
-];
-
-/**
  * Resume section -- TODO: Standardize resume contact format or offer MDX
  */
 export const education: EducationItem[] = [
@@ -163,7 +109,6 @@ export const resumeData: Resume = {
   timelineImageSrc: timeline,
   education: education,
   experience: experience,
-  clients: clients,
 };
 /**
  * Testimonial section

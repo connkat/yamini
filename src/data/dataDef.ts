@@ -8,23 +8,6 @@ export interface ImageData {
   imageHeight?: number;
   imageWidth?: number;
 }
-/**
- * Hero section
- */
-export interface Hero {
-  name: string;
-  subtitle?: string;
-  description: ReactElement;
-  actions: HeroActionItem[];
-  avatar?: string | StaticImageData;
-}
-
-interface HeroActionItem {
-  href: string;
-  text: string;
-  primary?: boolean;
-  Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
-}
 
 /**
  * Stat section
@@ -67,7 +50,6 @@ export interface Resume {
   timelineImageSrc?: string | StaticImageData;
   education: EducationItem[];
   experience: TimelineItem[];
-  clients: Client[];
 }
 
 /**

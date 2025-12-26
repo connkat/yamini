@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import type { EducationItem } from '../../../data/dataDef';
+import type { EducationItem as EducationItemType } from 'src/data';
 
-const EducationItem = ({ item }: { item: EducationItem }) => {
+const EducationItem = ({ item }: { item: EducationItemType }) => {
   const { title, date, location, content, image } = item;
   const { src: imageSrc, imageWidth, imageHeight } = image || {};
   const resolveSrc = !imageSrc ? undefined : typeof imageSrc === 'string' ? imageSrc : imageSrc.src;

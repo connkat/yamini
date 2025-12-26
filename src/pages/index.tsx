@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
 
 import { client } from 'sanity/lib/client';
-import { ABOUT_ME_QUERY, SKILLS_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
+import { ABOUT_ME_QUERY, CLIENTS_QUERY, SKILLS_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
 import { About, Contact, Page, Portfolio, ResumeSection, Testimonials, Welcome } from 'src/components';
 
 const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
@@ -35,9 +35,16 @@ interface HomeProps {
         skills: { name: string }[];
       }[]
     | null;
+  clientsData:
+    | {
+        name: string;
+        image: any;
+        url?: string;
+      }[]
+    | null;
 }
 
-const Home = ({ welcomeData, aboutMeData, workData, skillsData }: HomeProps) => {
+const Home = ({ welcomeData, aboutMeData, workData, skillsData, clientsData }: HomeProps) => {
   return (
     <Page>
       <section className="min-h-screen" id="Welcome">
@@ -47,7 +54,7 @@ const Home = ({ welcomeData, aboutMeData, workData, skillsData }: HomeProps) => 
         <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
-        <ResumeSection skillsData={skillsData} workData={workData} />
+        <ResumeSection clientsData={clientsData} skillsData={skillsData} workData={workData} />
       </section>
       <section className="min-h-screen" id="Portfolio">
         <Portfolio />
@@ -68,6 +75,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const aboutMeData = await client.fetch(ABOUT_ME_QUERY);
   const workData = await client.fetch(WORK_QUERY);
   const skillsData = await client.fetch(SKILLS_QUERY);
+  const clientsData = await client.fetch(CLIENTS_QUERY);
 
   return {
     props: {
@@ -75,6 +83,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       aboutMeData,
       workData,
       skillsData,
+      clientsData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

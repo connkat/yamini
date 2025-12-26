@@ -1,9 +1,8 @@
-import Image from 'next/image';
 import { useState } from 'react';
 
-import { EducationItem, Section, SkillGroup, TimelineItem } from 'src/components';
+import { Clients, EducationItem, Section, SkillGroup, TimelineItem } from 'src/components';
 import type { TimelineItem as TimelineItemType } from 'src/data';
-import { resumeData, SectionId } from 'src/data';
+import { education, SectionId } from 'src/data';
 
 interface ResumeProps {
   workData:
@@ -21,20 +20,19 @@ interface ResumeProps {
         skills: { name: string }[];
       }[]
     | null;
+  clientsData:
+    | {
+        name: string;
+        image: any;
+        url?: string;
+      }[]
+    | null;
 }
 
-const ResumeSection = ({ workData, skillsData }: ResumeProps) => {
+const ResumeSection = ({ workData, skillsData, clientsData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
-  const { education, experience, clients } = resumeData;
 
-  const workItems: TimelineItemType[] = workData
-    ? workData.map(work => ({
-        title: work.title,
-        company: work.company,
-        duration: work.duration,
-        order: work.order,
-      }))
-    : experience;
+  const workItems: TimelineItemType[] = workData || [];
 
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
@@ -90,12 +88,8 @@ const ResumeSection = ({ workData, skillsData }: ResumeProps) => {
                   <ul
                     className="tree-view h-[550px] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
-                    <div className="flex flex-row flex-wrap items-center justify-around p-6">
-                      {clients.map(({ title, image, imageHeight, imageWidth }) => (
-                        <div className="position-relative max-w-[100px] sm:max-w-[175px]" key={title}>
-                          <Image alt={title} height={imageHeight} src={image} width={imageWidth} />
-                        </div>
-                      ))}
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+                      {clientsData?.map((client, index) => <Clients client={client} key={`${client.name}-${index}`} />)}
                     </div>
                   </ul>
                 </div>

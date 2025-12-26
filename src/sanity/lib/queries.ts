@@ -28,3 +28,9 @@ export const SKILLS_QUERY = defineQuery(`*[_type == "skillGroup"] | order(order 
     name
   }
 }`);
+
+export const CLIENTS_QUERY = defineQuery(`*[_type == "clients"] | order(order asc){
+  name,
+  image,
+  url
+}`);
