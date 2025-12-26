@@ -11,7 +11,7 @@ import Welcome from 'components/Sections/Welcome';
 import { homePageMeta } from 'data/data';
 
 import { client } from '../sanity/lib/client';
-import { ABOUT_ME_QUERY, WELCOME_QUERY } from '../sanity/lib/queries';
+import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from '../sanity/lib/queries';
 
 const Footer = dynamic(() => import('../components/Sections/Footer'), { ssr: false });
 
@@ -28,9 +28,17 @@ interface HomeProps {
     mainContent: string;
     secondaryContent: string;
   } | null;
+  workData:
+    | {
+        title: string;
+        company: string;
+        duration: string;
+        order: number;
+      }[]
+    | null;
 }
 
-const Home = ({ welcomeData, aboutMeData }: HomeProps) => {
+const Home = ({ welcomeData, aboutMeData, workData }: HomeProps) => {
   const { title, description } = homePageMeta;
 
   return (
@@ -42,7 +50,7 @@ const Home = ({ welcomeData, aboutMeData }: HomeProps) => {
         <About aboutMeData={aboutMeData} />
       </section>
       <section className="min-h-screen" id="Resume">
-        <Resume />
+        <Resume workData={workData} />
       </section>
       <section className="min-h-screen" id="Portfolio">
         <Portfolio />
@@ -61,11 +69,13 @@ const Home = ({ welcomeData, aboutMeData }: HomeProps) => {
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const welcomeData = await client.fetch(WELCOME_QUERY);
   const aboutMeData = await client.fetch(ABOUT_ME_QUERY);
+  const workData = await client.fetch(WORK_QUERY);
 
   return {
     props: {
       welcomeData,
       aboutMeData,
+      workData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

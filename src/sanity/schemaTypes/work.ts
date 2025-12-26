@@ -6,6 +6,26 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'order',
+      title: 'Order #',
+      type: 'number',
+      options: {
+        list: [
+          { title: '1', value: 1 },
+          { title: '2', value: 2 },
+          { title: '3', value: 3 },
+          { title: '4', value: 4 },
+          { title: '5', value: 5 },
+          { title: '6', value: 6 },
+          { title: '7', value: 7 },
+          { title: '8', value: 8 },
+          { title: '9', value: 9 },
+          { title: '10', value: 10 },
+        ],
+      },
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'text',
@@ -26,17 +46,11 @@ export default defineType({
   ],
   preview: {
     select: {
-      updatedAt: '_updatedAt',
+      title: 'title',
     },
-    prepare({ updatedAt }) {
+    prepare({ title }) {
       return {
-        title: `Last updated: ${new Date(updatedAt).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-        })}`,
+        title: title || 'Untitled',
       };
     },
   },

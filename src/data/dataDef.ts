@@ -94,11 +94,10 @@ export interface Client {
  * Resume section
  */
 export interface TimelineItem {
-  date: string;
-  location: string;
+  duration: string;
+  company: string;
   title: string;
-  content?: ReactElement;
-  image?: string | StaticImageData;
+  order: number;
 }
 
 export interface EducationItem {

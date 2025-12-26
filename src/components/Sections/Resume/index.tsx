@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import { resumeData, SectionId } from '../../../data/data';
+import type { TimelineItem as TimelineItemType } from '../../../data/dataDef';
 import Section from '../../Layout/Section';
 
 import EducationItem from './EducationItem';
@@ -9,9 +10,29 @@ import ResumeSection from './ResumeSection';
 import { SkillGroup } from './Skills';
 import TimelineItem from './TimelineItem';
 
-const Resume = () => {
+interface ResumeProps {
+  workData:
+    | {
+        title: string;
+        company: string;
+        duration: string;
+        order: number;
+      }[]
+    | null;
+}
+
+const Resume = ({ workData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
   const { education, experience, skills, clients } = resumeData;
+
+  const workItems: TimelineItemType[] = workData
+    ? workData.map(work => ({
+        title: work.title,
+        company: work.company,
+        duration: work.duration,
+        order: work.order,
+      }))
+    : experience;
 
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
@@ -42,7 +63,7 @@ const Resume = () => {
                 <div aria-labelledby="work-tab" id="work-panel" role="tabpanel">
                   <ResumeSection>
                     <div className="grid grid-cols-1 gap-6 p-6 text-left">
-                      {experience.map((item, index) => (
+                      {workItems.map((item, index) => (
                         <TimelineItem item={item} key={`${item.title}-${index}`} />
                       ))}
                     </div>

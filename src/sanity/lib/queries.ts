@@ -13,3 +13,10 @@ export const ABOUT_ME_QUERY = defineQuery(`*[_type == "aboutMe"][0]{
   mainContent,
   secondaryContent
 }`);
+
+export const WORK_QUERY = defineQuery(`*[_type == "work"] | order(order asc){
+  title,
+  company,
+  duration,
+  order
+}`);
