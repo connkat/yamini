@@ -3,12 +3,11 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, Fragment, memo, useCallback, useMemo, useState } from 'react';
-
-import Socials from 'components/Socials';
-import { SectionId } from 'data';
-import { useNavObserver } from 'hooks';
-import { Clients, contact, homepage, Resume, START, testimonials } from 'images';
-import { about } from 'images/icons';
+import { Socials } from 'src/components';
+import { SectionId } from 'src/data';
+import { useNavObserver } from 'src/hooks';
+import { Clients, contact, homepage, Resume, START, testimonials } from 'src/images';
+import { about } from 'src/images/icons';
 
 export const headerID = 'headerNav';
 

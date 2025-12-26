@@ -1,3 +1,4 @@
+export * from './Icons';
 export * from './Layout';
 export * from './Sections';
-export * from './Socials';
+export { default as Socials } from './Socials';

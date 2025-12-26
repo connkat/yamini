@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import { FC, memo, useCallback, useMemo, useState } from 'react';
-
-import Section from 'components/Layout/Section';
-import { PortfolioModal } from 'components/Sections/Portfolio';
-import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'data';
+import { PortfolioModal, Section } from 'src/components';
+import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'src/data';
 
 const Portfolio: FC = memo(() => {
   const { folderImage, backgroundImageSrc, windowBackgroundImage } = portfolioSection;

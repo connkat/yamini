@@ -1,19 +1,11 @@
 import { GetStaticProps } from 'next';
 import dynamic from 'next/dynamic';
+import { client } from 'sanity/lib/client';
+import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from 'sanity/lib/queries';
+import { About, Contact, Page, Portfolio, Resume, Testimonials, Welcome } from 'src/components';
+import { homePageMeta } from 'src/data/data';
 
-import Page from 'components/Layout/Page';
-import About from 'components/Sections/About';
-import Contact from 'components/Sections/Contact';
-import Portfolio from 'components/Sections/Portfolio/Portfolio';
-import Resume from 'components/Sections/Resume';
-import Testimonials from 'components/Sections/Testimonials';
-import Welcome from 'components/Sections/Welcome';
-import { homePageMeta } from 'data/data';
-
-import { client } from '../sanity/lib/client';
-import { ABOUT_ME_QUERY, WELCOME_QUERY, WORK_QUERY } from '../sanity/lib/queries';
-
-const Footer = dynamic(() => import('../components/Sections/Footer'), { ssr: false });
+const Footer = dynamic(() => import('src/components/Sections/Footer'), { ssr: false });
 
 interface HomeProps {
   welcomeData: {

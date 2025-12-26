@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,33 +19,16 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "components": [
-        "src/components"
-      ],
-      "components/*": [
-        "src/components/*"
-      ],
-      "data": [
-        "src/data"
-      ],
-      "data/*": [
-        "src/data/*"
-      ],
-      "hooks": [
-        "src/hooks"
-      ],
-      "hooks/*": [
-        "src/hooks/*"
-      ],
-      "images": [
-        "src/images"
-      ],
-      "images/*": [
-        "src/images/*"
-      ],
-      "types/*": [
-        "src/types/*"
-      ]
+      "src": ["src/"],
+      "src/*": ["src/*"],
+      "sanity": ["src/sanity"],
+      "sanity/*": ["src/sanity/*"],
+      "data/*": ["src/data/*"],
+      "hooks": ["src/hooks"],
+      "hooks/*": ["src/hooks/*"],
+      "images": ["src/images"],
+      "images/*": ["src/images/*"],
+      "types/*": ["src/types/*"]
     },
     "plugins": [
       {
@@ -57,12 +36,6 @@
       }
     ]
   },
-  "include": [
-    "./src/**/*",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["./src/**/*", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

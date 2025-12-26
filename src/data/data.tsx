@@ -274,34 +274,10 @@ export const education: EducationItem[] = [
 
 export const experience: TimelineItem[] = [
   {
-    date: '2023 - Present',
-    location: 'YCPR',
+    duration: '2023 - Present',
+    company: 'YCPR',
     title: 'Founder',
-    content: undefined,
-  },
-  {
-    date: '2023 - Present',
-    location: 'Good Investing',
-    title: 'Director of Partnerships & Producer',
-    content: undefined,
-  },
-  {
-    date: '2022 - 2023',
-    location: 'Hut 8 Mining',
-    title: 'Communications Manager',
-    content: undefined,
-  },
-  {
-    date: '2021 - 2022',
-    location: 'Air Miles',
-    title: 'Talent Marketing Consultant',
-    content: undefined,
-  },
-  {
-    date: '2017 - 2021',
-    location: 'Porter Novelli',
-    title: 'Public Relations Consultant',
-    content: undefined,
+    order: 1,
   },
 ];
 

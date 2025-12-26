@@ -1,6 +1,6 @@
-export * from './About';
-export * from './Contact';
+export { default as About } from './About';
+export { default as Contact } from './Contact';
 export * from './Portfolio';
-export * from './Resume';
-export * from './Testimonials';
-export * from './Welcome';
+export { default as Resume } from './Resume';
+export { default as Testimonials } from './Testimonials';
+export { default as Welcome } from './Welcome';
