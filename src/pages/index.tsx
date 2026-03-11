@@ -6,6 +6,7 @@ import {
   ABOUT_ME_QUERY,
   CLIENTS_QUERY,
   EDUCATION_QUERY,
+  PORTFOLIO_QUERY,
   SKILLS_QUERY,
   TESTIMONIALS_QUERY,
   WELCOME_QUERY,
@@ -65,6 +66,20 @@ interface HomeProps {
         text: string;
       }[]
     | null;
+  portfolioData:
+    | {
+        title: string;
+        folderImage: any;
+        logo?: any;
+        pageTitle: string;
+        description: string;
+        deliverablesTitle: string;
+        deliverables: string[];
+        results?: string;
+        youtubeEmbeds?: string[];
+        screenshotImages?: any[];
+      }[]
+    | null;
 }
 
 const Home = ({
@@ -75,6 +90,7 @@ const Home = ({
   clientsData,
   educationData,
   testimonialsData,
+  portfolioData,
 }: HomeProps) => {
   return (
     <Page>
@@ -93,7 +109,7 @@ const Home = ({
         />
       </section>
       <section className="min-h-screen" id="Portfolio">
-        <Portfolio />
+        <Portfolio portfolioData={portfolioData} />
       </section>
       <section className="min-h-screen" id="Testimonials">
         <Testimonials testimonialsData={testimonialsData} />
@@ -114,6 +130,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const clientsData = await client.fetch(CLIENTS_QUERY);
   const educationData = await client.fetch(EDUCATION_QUERY);
   const testimonialsData = await client.fetch(TESTIMONIALS_QUERY);
+  const portfolioData = await client.fetch(PORTFOLIO_QUERY);
 
   return {
     props: {
@@ -124,6 +141,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       clientsData,
       educationData,
       testimonialsData,
+      portfolioData,
     },
     revalidate: 60, // Revalidate every 60 seconds
   };

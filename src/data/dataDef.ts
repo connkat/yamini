@@ -94,6 +94,19 @@ export interface PortfolioItem {
   heroImage: ImageData;
 }
 
+export interface SanityPortfolioItem {
+  title: string;
+  folderImage: any;
+  logo?: any;
+  pageTitle: string;
+  description: string;
+  deliverablesTitle: string;
+  deliverables: string[];
+  results?: string;
+  youtubeEmbeds?: string[];
+  screenshotImages?: any[];
+}
+
 export interface PortfolioSection {
   title: string;
   footnote?: string;

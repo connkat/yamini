@@ -47,3 +47,16 @@ export const TESTIMONIALS_QUERY = defineQuery(`*[_type == "testimonials"] | orde
   name,
   text
 }`);
+
+export const PORTFOLIO_QUERY = defineQuery(`*[_type == "portfolio"]{
+  title,
+  folderImage,
+  logo,
+  pageTitle,
+  description,
+  deliverablesTitle,
+  deliverables,
+  results,
+  youtubeEmbeds,
+  screenshotImages
+}`);

@@ -121,7 +121,7 @@ const MobileNav = memo<{ navSections: { name: SectionId; image: string }[]; curr
                 leave="transition-opacity ease-linear duration-300"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0">
-                <Dialog.Overlay className="fixed inset-0 bg-stone-900 bg-opacity-75" />
+                <Dialog.Panel className="fixed inset-0 bg-stone-900 bg-opacity-75" />
               </Transition.Child>
               <Transition.Child
                 as={Fragment}

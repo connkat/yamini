@@ -1,15 +1,21 @@
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 
+import { urlFor } from 'sanity/lib/image';
 import { PortfolioModal, Section } from 'src/components';
-import { PortfolioItem, portfolioItems, portfolioSection, SectionId } from 'src/data';
+import { portfolioSection, SectionId } from 'src/data';
+import { SanityPortfolioItem } from 'src/data/dataDef';
 
-const Portfolio = () => {
-  const { folderImage, backgroundImageSrc, windowBackgroundImage } = portfolioSection;
-  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+interface PortfolioProps {
+  portfolioData: SanityPortfolioItem[] | null;
+}
+
+const Portfolio = ({ portfolioData }: PortfolioProps) => {
+  const { backgroundImageSrc, windowBackgroundImage, folderImage } = portfolioSection;
+  const [selectedItem, setSelectedItem] = useState<SanityPortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = (item: PortfolioItem) => {
+  const handleOpenModal = (item: SanityPortfolioItem) => {
     setSelectedItem(item);
     setIsModalOpen(true);
   };
@@ -23,8 +29,8 @@ const Portfolio = () => {
     return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
   }, [backgroundImageSrc]);
 
-  const style: React.CSSProperties = { objectFit: 'contain' };
   const windowStyle: React.CSSProperties = { objectFit: 'cover' };
+
   return (
     <Section className="" data-scrollable noPadding sectionId={SectionId.Portfolio}>
       <div
@@ -51,48 +57,36 @@ const Portfolio = () => {
               />
               <ul className="flex flex-col h-fit gap-y-4 tree-view">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-scroll grid-rows-2" data-scrollable>
-                  {portfolioItems.map((item, index) => {
-                    const { title, heroImage } = item;
+                  {(portfolioData ?? []).map((item, index) => {
+                    const { title, folderImage: itemFolderImage } = item;
+                    const overlayUrl = itemFolderImage ? urlFor(itemFolderImage).width(96).height(96).url() : null;
+                    const staticFolderSrc = typeof folderImage.src === 'string' ? folderImage.src : folderImage.src.src;
+                    const style: React.CSSProperties = { objectFit: 'contain' };
                     return (
                       <div
-                        className="flex p-2 items-center justify-center cursor-pointer"
+                        className="flex flex-col p-2 items-center justify-center cursor-pointer"
                         key={`${title}-${index}`}
                         onClick={() => handleOpenModal(item)}>
-                        <div className="field-row-stacked mb-2">
-                          <div className="relative h-40 w-full overflow-hidden">
-                            {heroImage && (
-                              <div className="flex justify-center">
-                                <div className="absolute inset-0">
-                                  <Image
-                                    alt={title}
-                                    blurDataURL={
-                                      typeof folderImage.src === 'string' ? folderImage.src : folderImage.src.src
-                                    }
-                                    className="w-full h-full"
-                                    height={folderImage.imageHeight}
-                                    placeholder="blur"
-                                    src={folderImage.src}
-                                    style={style}
-                                    width={folderImage.imageWidth}
-                                  />
-                                </div>
-                                <div className="relative inset-y-10">
-                                  <Image
-                                    alt={title}
-                                    blurDataURL={typeof heroImage.src === 'string' ? heroImage.src : heroImage.src.src}
-                                    className="z-100 w-16 h-16"
-                                    height={heroImage.imageHeight}
-                                    placeholder="blur"
-                                    src={heroImage.src}
-                                    style={style}
-                                    width={heroImage.imageWidth}
-                                  />
-                                </div>
-                              </div>
-                            )}
+                        <div className="relative h-56 w-48">
+                          <div className="absolute inset-0">
+                            <Image
+                              alt={title}
+                              blurDataURL={staticFolderSrc}
+                              className="w-full h-full"
+                              height={folderImage.imageHeight}
+                              placeholder="blur"
+                              src={folderImage.src}
+                              style={style}
+                              width={folderImage.imageWidth}
+                            />
                           </div>
-                          <label className="text-xl">{title}</label>
+                          {overlayUrl && (
+                            <div className="absolute inset-0 flex items-center justify-center mt-4">
+                              <img alt={title} className="w-24 h-24 object-contain" src={overlayUrl} />
+                            </div>
+                          )}
                         </div>
+                        <p className="text-2xl mt-2 text-center">{title}</p>
                       </div>
                     );
                   })}
