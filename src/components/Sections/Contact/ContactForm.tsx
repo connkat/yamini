@@ -29,7 +29,7 @@ const ContactForm = () => {
     'border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-sm placeholder:text-indigo-400 text-black text-sm';
 
   return (
-    <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
+    <form className="grid min-h-80 grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
       <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
       <input
         autoComplete="email"

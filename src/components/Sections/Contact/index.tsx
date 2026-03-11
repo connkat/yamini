@@ -1,11 +1,8 @@
 import { DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
-import { contact, SectionId } from '../../../data/data';
-import { ContactType, ContactValue } from '../../../data/dataDef';
-import LinkedInIcon from '../../Icons/LinkedInIcon';
-import PawIcon from '../../Icons/PawIcon';
-import Section from '../../Layout/Section';
+import { LinkedInIcon, PawIcon, Section } from 'src/components';
+import { contact, ContactType, ContactValue, SectionId } from 'src/data';
 
 import ContactForm from './ContactForm';
 
@@ -21,7 +18,7 @@ const Contact = () => {
   return (
     <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Contact}>
       <div className="relative flex min-h-screen sm:h-screen items-center justify-center p-8 lg:px-0">
-        <div className="window z-10 h-min sm:max-w-screen-md  sm:px-0">
+        <div className="window z-10 h-min sm:max-w-3xl  sm:px-0">
           <div className="title-bar">
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Contact</div>
           </div>
@@ -47,8 +44,8 @@ const Contact = () => {
                             )}
                             href={href}
                             target="_blank">
-                            <Icon aria-hidden="true" className="h-4 w-4 flex-shrink-0 text-black sm:h-5 sm:w-5" />
-                            <span className="ml-3 text-sm sm:text-base text-left max-w-[150px]">{text}</span>
+                            <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-black sm:h-5 sm:w-5" />
+                            <span className="ml-3 text-sm sm:text-base text-left max-w-37.5">{text}</span>
                           </a>
                         </dd>
                       </div>

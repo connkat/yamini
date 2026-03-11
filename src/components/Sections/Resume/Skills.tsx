@@ -19,7 +19,7 @@ export const SkillGroup = ({ skillGroup }: { skillGroup: SkillGroup }) => {
   return (
     <>
       <div className="flex flex-row items-center gap-x-2 sm:gap-x-4 p-2">
-        {imageUrl && <Image alt={name} className="mt-[-2px]" height={30} src={imageUrl} width={30} />}
+        {imageUrl && <Image alt={name} className="-mt-0.5" height={30} src={imageUrl} width={30} />}
         <div className="text-xl sm:text-2xl font-bold">{name}</div>
       </div>
       <div className="flex flex-col">

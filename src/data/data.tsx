@@ -85,16 +85,16 @@ export const portfolioItems: PortfolioItem[] = [
       'Final produced videos with accompanying social media strategy and posts, including a paid media strategy.',
     whatIDid: (
       <ul className="list-disc">
-        <li className="text-lg mt-[-12px] mb-3">
+        <li className="text-lg -mt-3 mb-3">
           Created key messages and initial script with Pfizer Canada & non profit partner Food Allergy Canada
         </li>
-        <li className="text-lg mt-[-12px] mb-3">
+        <li className="text-lg -mt-3 mb-3">
           Sourced and partnered with videographer partner to storyboard and direct the shoot
         </li>
-        <li className="text-lg mt-[-12px] mb-3">Project managed whole project between clients and partners</li>
-        <li className="text-lg mt-[-12px] mb-3">Worked with videographer on final edits for post-production</li>
-        <li className="text-lg mt-[-12px] mb-3">Created social media posts to accompany videos</li>
-        <li className="text-lg mt-[-12px] mb-3">Worked with paid media agency on paid media strategy</li>
+        <li className="text-lg -mt-3 mb-3">Project managed whole project between clients and partners</li>
+        <li className="text-lg -mt-3 mb-3">Worked with videographer on final edits for post-production</li>
+        <li className="text-lg -mt-3 mb-3">Created social media posts to accompany videos</li>
+        <li className="text-lg -mt-3 mb-3">Worked with paid media agency on paid media strategy</li>
       </ul>
     ),
     results: '',
@@ -137,11 +137,11 @@ export const portfolioItems: PortfolioItem[] = [
     keyDeliverables: 'Influencer Instagram posts and stories with paid media boost for further reach',
     whatIDid: (
       <ul className="list-disc">
-        <li className="text-lg mt-[-12px] mb-3">Research and influencer selection</li>
-        <li className="text-lg mt-[-12px] mb-3">Key message document and contract negotiations</li>
-        <li className="text-lg mt-[-12px] mb-3">Coordinating content creation and edits</li>
-        <li className="text-lg mt-[-12px] mb-3">Monitoring comments and reporting</li>
-        <li className="text-lg mt-[-12px] mb-3">Adhering to GSK and Health Canada regulations</li>
+        <li className="text-lg -mt-3 mb-3">Research and influencer selection</li>
+        <li className="text-lg -mt-3 mb-3">Key message document and contract negotiations</li>
+        <li className="text-lg -mt-3 mb-3">Coordinating content creation and edits</li>
+        <li className="text-lg -mt-3 mb-3">Monitoring comments and reporting</li>
+        <li className="text-lg -mt-3 mb-3">Adhering to GSK and Health Canada regulations</li>
       </ul>
     ),
     results:
@@ -196,15 +196,15 @@ export const portfolioItems: PortfolioItem[] = [
       'A community page that encompasses the Good Investing brand while inviting both new and legacy members to engage in learning about sustainable finance.',
     whatIDid: (
       <ul className="list-disc">
-        <li className="text-lg mt-[-12px] mb-3">Developing strategy and key messaging</li>
-        <li className="text-lg mt-[-12px] mb-3">
+        <li className="text-lg -mt-3 mb-3">Developing strategy and key messaging</li>
+        <li className="text-lg -mt-3 mb-3">
           Project management top to bottom in coordinating lesson plans, calendar, schedule etc
         </li>
-        <li className="text-lg mt-[-12px] mb-3">Creation of classroom including graphic design and written text</li>
-        <li className="text-lg mt-[-12px] mb-3">
+        <li className="text-lg -mt-3 mb-3">Creation of classroom including graphic design and written text</li>
+        <li className="text-lg -mt-3 mb-3">
           Ongoing promotions and partnerships, including both free video content and gated content
         </li>
-        <li className="text-lg mt-[-12px] mb-3">Monitoring and responses </li>
+        <li className="text-lg -mt-3 mb-3">Monitoring and responses </li>
       </ul>
     ),
     images: [

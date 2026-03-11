@@ -3,8 +3,7 @@ import { useMemo, useState } from 'react';
 
 import { urlFor } from 'sanity/lib/image';
 import { PortfolioModal, Section } from 'src/components';
-import { portfolioSection, SectionId } from 'src/data';
-import { SanityPortfolioItem } from 'src/data/dataDef';
+import { portfolioSection, SanityPortfolioItem, SectionId } from 'src/data';
 
 interface PortfolioProps {
   portfolioData: SanityPortfolioItem[] | null;
@@ -37,7 +36,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
         className="bg-cover bg-center"
         style={backgroundImageSrc ? { backgroundImage: `url(${resolveSrc}` } : undefined}>
         <div className="relative flex min-h-screen items-center justify-center p-4 lg:px-0">
-          <div className="window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-[600px] sm:max-w-screen-lg sm:px-0">
+          <div className="window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-150 sm:max-w-5xl sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Portfolio</div>
             </div>

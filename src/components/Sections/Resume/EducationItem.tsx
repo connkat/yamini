@@ -22,7 +22,7 @@ const EducationItem = ({ item }: { item: EducationItem }) => {
             <Image alt={title} className="" height={48} src={imageUrl} width={48} />
           </div>
         )}
-        <div className="flex flex-col items-center sm:max-w-[300px]">
+        <div className="flex flex-col items-center sm:max-w-xs">
           <h1 className="text-xl md:text-2xl font-bold">{title}</h1>
           {major && <p className="text-center font-bold sm:text-base">{major}</p>}
           <div className="flex-1 text-md sm:text-lg font-medium italic ">{school}</div>

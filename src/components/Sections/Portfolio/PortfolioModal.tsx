@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { urlFor } from 'sanity/lib/image';
-import { SanityPortfolioItem } from 'src/data/dataDef';
+import { SanityPortfolioItem } from 'src/data';
 
 interface PortfolioModalProps {
   item: SanityPortfolioItem | null;
@@ -75,7 +75,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
         onClick={handleBackdropClick}
         ref={modalRef}>
-        <div className="window max-w-screen-lg w-11/12 max-h-[85vh]">
+        <div className="window max-w-5xl w-11/12 max-h-[85vh]">
           <div className="title-bar">
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-xl">
               <label className="text-xl font-bold">{item.pageTitle}</label>
@@ -105,7 +105,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
                   <p className="mb-2 text-xl font-bold">{item.deliverablesTitle}</p>
                   <ul className="list-disc mb-4">
                     {item.deliverables.map((d, i) => (
-                      <li className="text-lg mt-[-12px] mb-3" key={i}>
+                      <li className="text-lg -mt-3 mb-3" key={i}>
                         {d}
                       </li>
                     ))}
@@ -123,7 +123,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
                       const imgUrl = urlFor(image).width(300).url();
                       return (
                         <div
-                          className="relative max-w-[300px] cursor-pointer"
+                          className="relative max-w-xs cursor-pointer"
                           key={index}
                           onClick={() => handleThumbnailClick(index)}>
                           <img alt={`screenshot-${index}`} className="w-full h-auto object-contain" src={imgUrl} />
@@ -132,7 +132,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
                     })}
                     {(item.youtubeEmbeds ?? []).map((embedCode, index) => (
                       <div
-                        className="max-w-[300px] sm:max-w-[450px] [&_iframe]:max-w-full"
+                        className="max-w-75 sm:max-w-112.5 [&_iframe]:max-w-full"
                         dangerouslySetInnerHTML={{ __html: embedCode }}
                         key={`video-${index}`}
                       />
@@ -147,7 +147,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
 
       {selectedImageUrl && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80"
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/80"
           onClick={handleImageModalBackdropClick}
           ref={imageModalRef}>
           <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">

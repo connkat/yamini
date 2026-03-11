@@ -48,7 +48,7 @@ const DesktopNav = memo<{ navSections: { name: SectionId; image: string }[]; cur
     const inactiveClass = classNames(baseClass, 'text-neutral-100');
     return (
       <header
-        className="fixed bottom-0 z-50 h-[3.5rem] hidden w-full bg-[#c0c0c0] p-2 sm:block shadow-[0_-2px_#fffdfc]"
+        className="fixed bottom-0 z-50 h-14 hidden w-full bg-[#c0c0c0] p-2 sm:block shadow-[0_-2px_#fffdfc]"
         id={headerID}>
         <nav className="flex justify-between ">
           <div className="flex justify-left gap-x-4">
@@ -64,7 +64,7 @@ const DesktopNav = memo<{ navSections: { name: SectionId; image: string }[]; cur
                     key={section.name}
                     section={section.name}
                   />
-                  <div className="w-[4px] h-[36px] mt-[2px] bg-[#797979] float-left border-r-2 border-solid border-[#fff]" />
+                  <div className="w-1 h-9 mt-0.5 bg-[#797979] float-left border-r-2 border-solid border-white" />
                 </>
               ) : (
                 <NavItem
@@ -100,7 +100,7 @@ const MobileNav = memo<{ navSections: { name: SectionId; image: string }[]; curr
     const inactiveClass = classNames(baseClass, 'text-neutral-100');
     return (
       <header
-        className="fixed bottom-0 z-50 h-[3.5rem] block w-full bg-[#c0c0c0] p-2 sm:hidden shadow-[0_-2px_#fffdfc]"
+        className="fixed bottom-0 z-50 h-14 block w-full bg-[#c0c0c0] p-2 sm:hidden shadow-[0_-2px_#fffdfc]"
         id={headerID}>
         <nav className="flex justify-between ">
           <button
@@ -112,7 +112,7 @@ const MobileNav = memo<{ navSections: { name: SectionId; image: string }[]; curr
             <Image alt="menu" className="my-2" height={22.5} src={START} />
           </button>
           <Transition.Root as={Fragment} show={isOpen}>
-            <Dialog as="div" className="fixed inset-0 z-40 h-[calc(100%-3.5rem)] flex sm:hidden" onClose={toggleOpen}>
+            <Dialog as="div" className="fixed inset-0 z-40 h-[calc(100%-3.5rem)] flex" onClose={toggleOpen}>
               <Transition.Child
                 as={Fragment}
                 enter="transition-opacity ease-linear duration-300"

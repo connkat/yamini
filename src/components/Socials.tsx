@@ -1,4 +1,4 @@
-import { socialLinks } from '../data/data';
+import { socialLinks } from 'src/data';
 
 const Socials = () => {
   return (
