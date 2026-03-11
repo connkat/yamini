@@ -162,3 +162,107 @@ th {
 th {
   font-weight: 600;
 }
+
+/* ── Y2K styles ─────────────────────────────────────────── */
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+@keyframes metallic-shine {
+  to { background-position: 200% center; }
+}
+
+@keyframes window-glow {
+  from { box-shadow: 0 0 10px rgba(176, 128, 255, 0.5), 0 0 30px rgba(128, 0, 255, 0.3), 0 0 60px rgba(64, 0, 200, 0.2); }
+  to   { box-shadow: 0 0 20px rgba(200, 160, 255, 0.9), 0 0 50px rgba(160, 64, 255, 0.6), 0 0 90px rgba(100, 0, 255, 0.4); }
+}
+
+@keyframes iridescent {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.starfield-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 5% 10%,  rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 15% 80%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 35% 70%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 45% 20%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 55% 90%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 65% 50%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 75% 30%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 85% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 95% 15%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 10% 55%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 20% 25%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 30% 85%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 40% 45%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 50% 75%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 60% 35%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 70% 65%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 5%,  rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 90% 85%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 3% 50%,  rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 48% 8%,  rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 92% 42%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 17% 92%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 58% 18%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 77% 88%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 33% 62%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 88% 28%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 43% 95%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 67% 12%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 12% 38%, rgba(255,255,255,0.9), transparent);
+  pointer-events: none;
+  z-index: 0;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.metallic-text {
+  background: linear-gradient(135deg, #e0e0e0 0%, #ffffff 25%, #a8a8a8 50%, #ffffff 75%, #e0e0e0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: metallic-shine 3s linear infinite;
+}
+
+.y2k-window {
+  animation: window-glow 2s ease-in-out infinite alternate;
+}
+
+.y2k-button {
+  background: linear-gradient(135deg, #ff9de2, #c084fc, #60a5fa, #34d399, #fbbf24, #ff9de2);
+  background-size: 300% 300%;
+  animation: iridescent 3s ease infinite;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.blink-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.025) 2px,
+    rgba(0, 0, 0, 0.025) 4px
+  );
+  pointer-events: none;
+  z-index: 15;
+}
