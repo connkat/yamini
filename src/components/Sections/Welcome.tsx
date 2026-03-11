@@ -56,9 +56,9 @@ const Welcome = ({ welcomeData }: WelcomeProps) => {
               <button
                 className="px-4 py-2 text-lg font-bold"
                 onClick={() => window.open(resumeLink, '_blank', 'noopener,noreferrer')}
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#000000' }}>
                 Resume
-                <ArrowDownTrayIcon style={{ width: '1.25rem', height: '1.25rem', flexShrink: 0 }} />
+                <ArrowDownTrayIcon style={{ width: '1.25rem', height: '1.25rem', flexShrink: 0, stroke: '#000000' }} />
               </button>
               <button
                 className="flex gap-x-2 items-center px-4 py-2 text-lg font-bold"

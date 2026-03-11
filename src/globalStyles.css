@@ -292,7 +292,8 @@ th {
 
 
 button svg {
-  stroke: var(--text-color);
+  stroke: #000 !important;
+  color: #000 !important;
 }
 
 .y2k-button {
