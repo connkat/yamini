@@ -174,8 +174,8 @@ th {
 }
 
 @keyframes window-glow {
-  from { box-shadow: 0 0 10px rgba(176, 128, 255, 0.5), 0 0 30px rgba(128, 0, 255, 0.3), 0 0 60px rgba(64, 0, 200, 0.2); }
-  to   { box-shadow: 0 0 20px rgba(200, 160, 255, 0.9), 0 0 50px rgba(160, 64, 255, 0.6), 0 0 90px rgba(100, 0, 255, 0.4); }
+  from { filter: drop-shadow(0 0 8px rgba(176, 128, 255, 0.5)) drop-shadow(0 0 20px rgba(128, 0, 255, 0.3)); }
+  to   { filter: drop-shadow(0 0 16px rgba(200, 160, 255, 0.9)) drop-shadow(0 0 40px rgba(160, 64, 255, 0.6)); }
 }
 
 @keyframes iridescent {
@@ -239,7 +239,9 @@ th {
 
 .y2k-window {
   animation: window-glow 2s ease-in-out infinite alternate;
+  /* filter instead of box-shadow so 98.css border is preserved */
 }
+
 
 .y2k-button {
   background: linear-gradient(135deg, #ff9de2, #c084fc, #60a5fa, #34d399, #fbbf24, #ff9de2);
@@ -252,6 +254,7 @@ th {
   animation: blink 1s step-end infinite;
 }
 
+/* scanlines only (Welcome) */
 .scanlines::after {
   content: '';
   position: absolute;
@@ -263,6 +266,24 @@ th {
     rgba(0, 0, 0, 0.025) 2px,
     rgba(0, 0, 0, 0.025) 4px
   );
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* scanlines + bottom fade combined in one ::after (About, Resume) */
+.scanlines-fade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, transparent 75%, rgba(0, 0, 0, 0.45) 100%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.025) 2px,
+      rgba(0, 0, 0, 0.025) 4px
+    );
   pointer-events: none;
   z-index: 15;
 }

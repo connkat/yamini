@@ -44,8 +44,8 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
 
   return (
     <Section className="gradient-bg-pastel p-0 md:py-8" sectionId={SectionId.Resume}>
-      <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center">
-        <div className="window z-10 overflow-scroll mb-12 w-[95%] max-w-3xl h-175 sm:px-0">
+      <div className="scanlines starfield-bg relative flex min-h-screen items-center justify-center sm:max-h-screen">
+        <div className="window z-10 mb-12 h-175 w-[95%] max-w-3xl overflow-hidden sm:px-0">
           <div className="title-bar">
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Resume</div>
           </div>

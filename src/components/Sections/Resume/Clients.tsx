@@ -16,21 +16,24 @@ export const Clients = ({ client }: { client: Clients }) => {
   if (!imageUrl) return null;
 
   const imageElement = (
-    <div className="relative w-full aspect-square flex items-center justify-center p-6">
-      <div className="relative w-full h-full">
-        <Image
-          alt={name}
-          className="object-contain"
-          fill
-          sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
-          src={imageUrl}
-        />
+    <div className="field-row-stacked" style={{ border: '2px inset', padding: '4px' }}>
+      <div className="relative w-full aspect-square flex items-center justify-center p-4">
+        <div className="relative w-full h-full">
+          <Image
+            alt={name}
+            className="object-contain"
+            fill
+            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+            src={imageUrl}
+          />
+        </div>
       </div>
+      <div className="text-center text-xs sm:text-sm px-1 pb-1" style={{ borderTop: '1px solid #888' }}>{name}</div>
     </div>
   );
 
   return url ? (
-    <a className="block hover:opacity-75 transition-opacity" href={url} rel="noopener noreferrer" target="_blank">
+    <a href={url} rel="noopener noreferrer" style={{ cursor: 'default' }} target="_blank">
       {imageElement}
     </a>
   ) : (
