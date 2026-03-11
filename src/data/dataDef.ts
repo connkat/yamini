@@ -10,15 +10,6 @@ export interface ImageData {
 }
 
 /**
- * Stat section
- */
-export interface Stat {
-  title: string;
-  value: number;
-  Icon?: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, 'ref'>>;
-}
-
-/**
  * Portfolio section
  */
 export interface Client {
@@ -108,11 +99,6 @@ export interface SanityPortfolioItem {
 }
 
 export interface PortfolioSection {
-  title: string;
-  footnote?: string;
-  clientOrBrandTitle?: string;
-  keyDeliverablesTitle?: string;
-  whatIDidTitle?: string;
   folderImage: ImageData;
   backgroundImageSrc?: string | StaticImageData;
   windowBackgroundImage: ImageData;
