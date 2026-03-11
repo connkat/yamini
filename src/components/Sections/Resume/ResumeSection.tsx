@@ -39,13 +39,12 @@ interface ResumeProps {
 
 const ResumeSection = ({ workData, skillsData, clientsData, educationData }: ResumeProps) => {
   const [activeTab, setActiveTab] = useState<'Work' | 'Skills' | 'Clients' | 'Education'>('Work');
-
   const workItems = workData || [];
 
   return (
-    <Section className="p-0 md:py-8" sectionId={SectionId.Resume}>
+    <Section noPadding sectionId={SectionId.Resume}>
       <div className="scanlines relative flex min-h-screen items-center justify-center sm:max-h-screen">
-        <div className="window y2k-window z-10 mb-12 h-175 w-[95%] max-w-3xl overflow-hidden sm:px-0">
+        <div className="window y2k-window z-10 mb-12 h-[75vh] w-[95%] max-w-3xl overflow-hidden sm:px-0">
           <div className="title-bar">
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Resume</div>
           </div>
@@ -68,7 +67,7 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
               {activeTab === 'Work' && (
                 <div aria-labelledby="work-tab" className="gap-y-4 p-2" id="work-panel" role="tabpanel">
                   <ul
-                    className="tree-view h-137.5 overflow-scroll col-span-1 flex flex-col md:col-span-3"
+                    className="tree-view h-[calc(75vh-10rem)] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="grid grid-cols-1 gap-6 p-6 text-left">
                       {workItems.map((item, index) => (
@@ -81,7 +80,7 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
               {activeTab === 'Skills' && (
                 <div aria-labelledby="skills-tab" className="gap-y-4 p-2" id="skills-panel" role="tabpanel">
                   <ul
-                    className="tree-view h-137.5 overflow-scroll col-span-1 flex flex-col md:col-span-3"
+                    className="tree-view h-[calc(75vh-10rem)] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="pl-4">
                       {skillsData?.map((skillgroup, index) => (
@@ -94,7 +93,7 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
               {activeTab === 'Clients' && (
                 <div aria-labelledby="clients-tab" className="gap-y-4 p-2" id="clients-panel" role="tabpanel">
                   <ul
-                    className="tree-view h-137.5 overflow-scroll col-span-1 flex flex-col md:col-span-3"
+                    className="tree-view h-[calc(75vh-10rem)] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 p-6">
                       {clientsData?.map((client, index) => (
@@ -107,7 +106,7 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
               {activeTab === 'Education' && (
                 <div aria-labelledby="education-tab" className="gap-y-4 p-2" id="education-panel" role="tabpanel">
                   <ul
-                    className="tree-view h-137.5 overflow-scroll col-span-1 flex flex-col md:col-span-3"
+                    className="tree-view h-[calc(75vh-10rem)] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="flex flex-col py-12 h-full items-center justify-around">
                       {educationData?.map((item, index) => (

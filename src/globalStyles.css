@@ -199,6 +199,35 @@ th {
   50%       { opacity: 0; }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+@keyframes glitch {
+  0%, 18%, 20%, 48%, 50%, 78%, 80%, 100% {
+    transform: none;
+    clip-path: none;
+    opacity: 1;
+  }
+  19% {
+    transform: skewX(-10deg) translateX(-8px);
+    clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
+    opacity: 0.7;
+  }
+  49% {
+    transform: skewX(8deg) translateX(8px);
+    clip-path: polygon(0 55%, 100% 55%, 100% 75%, 0 75%);
+    opacity: 0.8;
+  }
+  79% {
+    transform: skewX(-5deg) translateX(-4px);
+    clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+    opacity: 0.75;
+  }
+}
+
+
 .starfield-bg::before {
   content: '';
   position: fixed;
@@ -245,14 +274,26 @@ th {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: metallic-shine 3s linear infinite;
+  animation: metallic-shine 3s linear infinite, glitch 4s ease-in-out infinite;
 }
 
 .y2k-window {
-  animation: window-glow 2s ease-in-out infinite alternate;
+  animation: window-glow 2s ease-in-out infinite alternate, float 3s ease-in-out infinite;
   /* filter instead of box-shadow so 98.css border is preserved */
 }
 
+
+.folder-item {
+  transition: transform 0.2s ease;
+}
+.folder-item:hover {
+  transform: rotate(-3deg) scale(1.05);
+}
+
+
+button svg {
+  stroke: var(--text-color);
+}
 
 .y2k-button {
   background: linear-gradient(135deg, #ff9de2, #c084fc, #60a5fa, #34d399, #fbbf24, #ff9de2);

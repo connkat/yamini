@@ -14,9 +14,9 @@ interface AboutProps {
 
 const About = ({ aboutMeData }: AboutProps) => {
   const imageUrl = aboutMeData?.image ? urlFor(aboutMeData.image).width(1536).height(2048).url() : null;
-
   const mainContent = aboutMeData?.mainContent;
   const secondaryContentText = aboutMeData?.secondaryContent;
+
   return (
     <Section noPadding sectionId={SectionId.About}>
       <div className="relative flex min-h-screen items-center justify-center p-8 sm:max-h-screen lg:px-0">

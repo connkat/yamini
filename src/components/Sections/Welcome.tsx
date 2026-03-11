@@ -53,19 +53,18 @@ const Welcome = ({ welcomeData }: WelcomeProps) => {
             <p className="prose text-black sm:prose-lg md:prose-2xl">{welcomeData?.summary}</p>
 
             <div className="flex w-full justify-center gap-x-4">
-              <a
-                className="y2k-button flex gap-x-2 border-2 px-4 py-2 text-lg font-bold focus:outline-none focus:ring-2 focus:ring-offset-2"
-                href={resumeLink}
-                rel="noopener noreferrer"
-                target="_blank">
+              <button
+                className="px-4 py-2 text-lg font-bold"
+                onClick={() => window.open(resumeLink, '_blank', 'noopener,noreferrer')}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                 Resume
-                <ArrowDownTrayIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-              </a>
-              <a
-                className="y2k-button flex gap-x-2 border-2 px-4 py-2 text-lg font-bold focus:outline-none focus:ring-2 focus:ring-offset-2"
-                href={`#${SectionId.Contact}`}>
+                <ArrowDownTrayIcon style={{ width: '1.25rem', height: '1.25rem', flexShrink: 0 }} />
+              </button>
+              <button
+                className="flex gap-x-2 items-center px-4 py-2 text-lg font-bold"
+                onClick={() => document.getElementById(SectionId.Contact)?.scrollIntoView({ behavior: 'smooth' })}>
                 Contact
-              </a>
+              </button>
             </div>
           </div>
         </div>

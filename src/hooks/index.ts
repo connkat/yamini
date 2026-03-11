@@ -1,4 +1,5 @@
 import useInterval from './useInterval';
 import useNavObserver from './useNavObserver';
+import { useSlideIn } from './useSlideIn';
 
-export { useInterval, useNavObserver };
+export { useInterval, useNavObserver, useSlideIn };

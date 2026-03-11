@@ -76,7 +76,7 @@ const TestimonialItem = ({
       'tree-view min-h-max flex h-[80%] snap-start snap-always flex-col items-start gap-y-4 p-4 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
       isActive ? 'opacity-100' : 'opacity-0',
     )}>
-    <div className="flex flex-col p-2 gap-y-4">
+    <div className="flex flex-col p-6 gap-y-4">
       <p className="prose prose-sm font-medium italic text-black sm:prose-xl">{text}</p>
       <p className="text-xs italic text-black sm:text-sm md:text-base lg:text-xl">-- {name}</p>
     </div>

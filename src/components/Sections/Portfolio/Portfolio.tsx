@@ -47,7 +47,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
                 style={windowStyle}
               />
               <ul className="flex flex-col h-fit gap-y-4 tree-view">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-scroll grid-rows-2" data-scrollable>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 overflow-y-scroll overflow-x-hidden grid-rows-2" data-scrollable>
                   {(portfolioData ?? []).map((item, index) => {
                     const { title, folderImage: itemFolderImage } = item;
                     const overlayUrl = itemFolderImage ? urlFor(itemFolderImage).width(96).height(96).url() : null;
@@ -55,10 +55,10 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
                     const style: React.CSSProperties = { objectFit: 'contain' };
                     return (
                       <div
-                        className="flex flex-col p-2 items-center justify-center cursor-pointer"
+                        className="folder-item flex flex-col p-2 items-center justify-center cursor-pointer"
                         key={`${title}-${index}`}
                         onClick={() => handleOpenModal(item)}>
-                        <div className="relative h-56 w-48">
+                        <div className="relative h-36 w-32">
                           <div className="absolute inset-0">
                             <Image
                               alt={title}
@@ -73,7 +73,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
                           </div>
                           {overlayUrl && (
                             <div className="absolute inset-0 flex items-center justify-center mt-4">
-                              <img alt={title} className="w-24 h-24 object-contain" src={overlayUrl} />
+                              <img alt={title} className="w-16 h-16 object-contain" src={overlayUrl} />
                             </div>
                           )}
                         </div>
