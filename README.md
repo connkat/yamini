@@ -2,7 +2,7 @@
 
 A Y2K resume website for Yamini Coen, a communications, public relations and digital marketing expert based out of Toronto, Canada.
 
-![Example](public/example.png)
+[YaminiCoen.com](https://yaminicoen.com/)
 
 ## Installation
 
@@ -15,3 +15,7 @@ yarn install
 ```bash
 yarn dev
 ```
+
+## Studio
+
+Navigate to `/studio` of your domain to update/edit the sanity content once the server is running. 

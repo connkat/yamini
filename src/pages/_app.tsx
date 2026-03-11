@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 
 import '98.css';
-import '../globalStyles.scss';
+import '../globalStyles.css';
 
 const MyApp = ({ Component, pageProps }: AppProps): ReactElement => {
   return (

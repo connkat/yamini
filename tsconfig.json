@@ -12,20 +12,19 @@
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
-      "src": ["src/"],
-      "src/*": ["src/*"],
-      "sanity": ["src/sanity"],
-      "sanity/*": ["src/sanity/*"],
-      "images": ["src/images"],
-      "images/*": ["src/images/*"],
-      "types/*": ["src/types/*"]
+      "src": ["./src/"],
+      "src/*": ["./src/*"],
+      "sanity": ["./src/sanity"],
+      "sanity/*": ["./src/sanity/*"],
+      "images": ["./src/images"],
+      "images/*": ["./src/images/*"],
+      "types/*": ["./src/types/*"]
     },
     "plugins": [
       {

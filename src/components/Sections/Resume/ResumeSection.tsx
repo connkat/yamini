@@ -97,7 +97,9 @@ const ResumeSection = ({ workData, skillsData, clientsData, educationData }: Res
                     className="tree-view h-[550px] overflow-scroll col-span-1 flex flex-col md:col-span-3"
                     data-scrollable>
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-                      {clientsData?.map((client, index) => <Clients client={client} key={`${client.name}-${index}`} />)}
+                      {clientsData?.map((client, index) => (
+                        <Clients client={client} key={`${client.name}-${index}`} />
+                      ))}
                     </div>
                   </ul>
                 </div>
