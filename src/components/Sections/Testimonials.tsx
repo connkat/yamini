@@ -33,7 +33,7 @@ const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
   return (
     <Section noPadding sectionId={SectionId.Testimonials}>
       <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
-          <div className="window z-10 h-96 max-w-[90vw] sm:max-h-[90vh] mb-12 sm:max-w-3xl  sm:px-0">
+          <div className="window y2k-window z-10 h-96 max-w-[90vw] sm:max-h-[90vh] mb-12 sm:max-w-3xl  sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Testimonials</div>
             </div>

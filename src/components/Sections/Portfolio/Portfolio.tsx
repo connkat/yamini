@@ -28,7 +28,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
   return (
     <Section className="" data-scrollable noPadding sectionId={SectionId.Portfolio}>
       <div className="relative flex min-h-screen items-center justify-center p-4 lg:px-0">
-          <div className="window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-150 sm:max-w-5xl sm:px-0">
+          <div className="window y2k-window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-150 sm:max-w-5xl sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Portfolio</div>
             </div>
