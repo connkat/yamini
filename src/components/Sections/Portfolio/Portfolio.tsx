@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
 import { urlFor } from 'sanity/lib/image';
 import { PortfolioModal, Section } from 'src/components';
@@ -10,7 +10,7 @@ interface PortfolioProps {
 }
 
 const Portfolio = ({ portfolioData }: PortfolioProps) => {
-  const { backgroundImageSrc, windowBackgroundImage, folderImage } = portfolioSection;
+  const { windowBackgroundImage, folderImage } = portfolioSection;
   const [selectedItem, setSelectedItem] = useState<SanityPortfolioItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -23,19 +23,11 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
     setIsModalOpen(false);
   };
 
-  const resolveSrc = useMemo(() => {
-    if (!backgroundImageSrc) return undefined;
-    return typeof backgroundImageSrc === 'string' ? backgroundImageSrc : backgroundImageSrc.src;
-  }, [backgroundImageSrc]);
-
   const windowStyle: React.CSSProperties = { objectFit: 'cover' };
 
   return (
     <Section className="" data-scrollable noPadding sectionId={SectionId.Portfolio}>
-      <div
-        className="bg-cover bg-center"
-        style={backgroundImageSrc ? { backgroundImage: `url(${resolveSrc}` } : undefined}>
-        <div className="relative flex min-h-screen items-center justify-center p-4 lg:px-0">
+      <div className="relative flex min-h-screen items-center justify-center p-4 lg:px-0">
           <div className="window z-10 min-h-[50vh] max-h-[80vh] sm:min-w-150 sm:max-w-5xl sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Portfolio</div>
@@ -94,7 +86,6 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
             </div>
           </div>
         </div>
-      </div>
 
       <PortfolioModal isOpen={isModalOpen} item={selectedItem} onClose={handleCloseModal} />
     </Section>

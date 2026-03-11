@@ -2,6 +2,16 @@
 
 /* Tailwind v4 compatibility - restore v3 defaults */
 @layer base {
+  html {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+  }
+
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
   *,
   ::before,
   ::after {
@@ -106,6 +116,7 @@
       #e7c6ff 90%,
       #ffd6ff
     );
+    background-attachment: fixed;
   }
 
   /* Chrome, Safari and Opera */
@@ -190,7 +201,7 @@ th {
 
 .starfield-bg::before {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
   background-image:
     radial-gradient(1px 1px at 5% 10%,  rgba(255,255,255,0.9), transparent),
@@ -224,7 +235,7 @@ th {
     radial-gradient(1px 1px at 67% 12%, rgba(255,255,255,0.7), transparent),
     radial-gradient(1px 1px at 12% 38%, rgba(255,255,255,0.9), transparent);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   animation: twinkle 4s ease-in-out infinite alternate;
 }
 

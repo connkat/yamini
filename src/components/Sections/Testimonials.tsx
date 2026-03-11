@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Section } from 'src/components';
 import { SectionId } from 'src/data';
 import { useInterval } from 'src/hooks';
-import { clouds as cloudsImage } from 'src/images';
 
 interface Testimonial {
   name: string;
@@ -17,7 +16,6 @@ interface TestimonialsProps {
 
 const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
   const testimonials = testimonialsData || [];
-  const cloudsUrl = (cloudsImage as any).src || cloudsImage;
   const [activeIndex, setActiveIndex] = useState(0);
 
   const next = () => {
@@ -33,9 +31,8 @@ const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
   const activeTestimonial = testimonials[activeIndex];
 
   return (
-    <Section className="bg-clouds" noPadding sectionId={SectionId.Testimonials}>
-      <div className="bg-cover bg-center" style={{ backgroundImage: `url(${cloudsUrl})` }}>
-        <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
+    <Section noPadding sectionId={SectionId.Testimonials}>
+      <div className="relative flex min-h-screen sm:max-h-screen items-center justify-center p-8 lg:px-0">
           <div className="window z-10 h-96 max-w-[90vw] sm:max-h-[90vh] mb-12 sm:max-w-3xl  sm:px-0">
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Testimonials</div>
@@ -63,7 +60,6 @@ const Testimonials = ({ testimonialsData }: TestimonialsProps) => {
             </div>
           </div>
         </div>
-      </div>
     </Section>
   );
 };

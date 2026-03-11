@@ -20,8 +20,8 @@ const Welcome = ({ welcomeData }: WelcomeProps) => {
   const resumeLink = welcomeData?.resumeLink || '/Yamini_Coen_Resume.pdf';
 
   return (
-    <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Welcome}>
-      <div className="scanlines starfield-bg relative flex min-h-screen items-center justify-center p-8 sm:max-h-screen lg:px-0">
+    <Section className="px-4" noPadding sectionId={SectionId.Welcome}>
+      <div className="scanlines relative flex min-h-screen items-center justify-center p-8 sm:max-h-screen lg:px-0">
         <div className="window y2k-window z-10 mb-12 h-min sm:max-h-[90vh] sm:max-w-5xl sm:px-0">
           <div className="title-bar">
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Welcome</div>

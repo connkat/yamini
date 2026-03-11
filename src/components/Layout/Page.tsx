@@ -24,7 +24,9 @@ const Page: NextPage<PropsWithChildren> = ({ children }) => {
           name="twitter:description"
         />
       </Head>
-      {children}
+      <div className="gradient-bg-pastel starfield-bg">
+        {children}
+      </div>
     </>
   );
 };

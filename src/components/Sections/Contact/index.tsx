@@ -16,7 +16,7 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 const Contact = () => {
   const { headerText, description, items } = contact;
   return (
-    <Section className="gradient-bg-pastel px-4" noPadding sectionId={SectionId.Contact}>
+    <Section className="px-4" noPadding sectionId={SectionId.Contact}>
       <div className="relative flex min-h-screen sm:h-screen items-center justify-center p-8 lg:px-0">
         <div className="window z-10 h-min sm:max-w-3xl  sm:px-0">
           <div className="title-bar">
