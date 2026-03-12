@@ -32,7 +32,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
             <div className="title-bar">
               <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Portfolio</div>
             </div>
-            <div className="window-body h-max relative items-center">
+            <div className="window-body h-max relative items-center overflow-hidden">
               <Image
                 alt="folder-image"
                 blurDataURL={
@@ -58,7 +58,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
                         className="folder-item flex flex-col p-2 items-center justify-center cursor-pointer"
                         key={`${title}-${index}`}
                         onClick={() => handleOpenModal(item)}>
-                        <div className="relative h-36 w-32">
+                        <div className="relative h-24 w-20">
                           <div className="absolute inset-0">
                             <Image
                               alt={title}
@@ -73,7 +73,7 @@ const Portfolio = ({ portfolioData }: PortfolioProps) => {
                           </div>
                           {overlayUrl && (
                             <div className="absolute inset-0 flex items-center justify-center mt-4">
-                              <img alt={title} className="w-16 h-16 object-contain" src={overlayUrl} />
+                              <img alt={title} className="w-10 h-10 object-contain" src={overlayUrl} />
                             </div>
                           )}
                         </div>

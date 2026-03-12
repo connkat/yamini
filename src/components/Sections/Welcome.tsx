@@ -27,9 +27,19 @@ const Welcome = ({ welcomeData }: WelcomeProps) => {
             <div className="title-bar-text p-1 lg:p-2 text-base sm:text-2xl">Welcome</div>
           </div>
           <div className="flex flex-col items-center gap-y-4 p-4 text-center sm:gap-y-6 lg:p-6">
-            <div className="flex flex-row items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              {imageUrl && (
+                <Image
+                  alt="avatar"
+                  className="max-h-[25vh] sm:max-h-[30vh] w-auto"
+                  height={1100}
+                  src={imageUrl}
+                  style={{ objectFit: 'contain' }}
+                  width={400}
+                />
+              )}
               <div className="flex flex-col items-center gap-y-4 text-center sm:gap-y-6">
-                <h1 className="metallic-text text-5xl font-bold sm:text-6xl">
+                <h1 className="metallic-text text-4xl font-bold sm:text-6xl">
                   {welcomeData?.title}
                   <span aria-hidden="true" className="blink-cursor ml-1">_</span>
                 </h1>
@@ -37,16 +47,6 @@ const Welcome = ({ welcomeData }: WelcomeProps) => {
                   {welcomeData?.subtitle}
                 </h2>
               </div>
-              {imageUrl && (
-                <Image
-                  alt="avatar"
-                  className="max-h-[30vh]"
-                  height={1100}
-                  src={imageUrl}
-                  style={{ objectFit: 'contain' }}
-                  width={400}
-                />
-              )}
             </div>
 
             <h2 className="text-base font-bold text-black sm:text-xl md:hidden">{welcomeData?.subtitle}</h2>

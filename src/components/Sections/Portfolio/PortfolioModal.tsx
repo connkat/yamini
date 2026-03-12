@@ -83,10 +83,10 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
           </div>
 
           {/* Body */}
-          <div className="window-body flex flex-col sm:flex-row gap-0 overflow-hidden h-[calc(75vh-32px)]">
+          <div className="window-body flex flex-col sm:flex-row gap-0 overflow-y-auto sm:overflow-hidden h-auto sm:h-[calc(75vh-32px)]">
 
             {/* Left: project info */}
-            <div className="sm:w-2/5 shrink-0 flex flex-col gap-2 p-3 overflow-y-auto border-r-2 border-[#808080]" data-scrollable>
+            <div className="sm:w-2/5 shrink-0 flex flex-col gap-2 p-3 sm:overflow-y-auto border-r-2 border-[#808080]" data-scrollable>
               {item.logo && (
                 <div className="field-row-stacked" style={{ border: '2px inset', padding: '6px' }}>
                   <img
@@ -123,7 +123,7 @@ const PortfolioModal = ({ item, isOpen, onClose }: PortfolioModalProps) => {
             </div>
 
             {/* Right: media */}
-            <div className="flex-1 overflow-y-auto p-3" data-scrollable>
+            <div className="flex-1 sm:overflow-y-auto p-3" data-scrollable>
               {screenshots.length > 0 && (
                 <div className="flex flex-col gap-3 mb-4">
                   {screenshots.map((image, index) => (
